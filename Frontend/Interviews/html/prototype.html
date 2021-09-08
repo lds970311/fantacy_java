@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<script>
+    function Car(brand, price) {
+        this.brand = brand;
+        this.price = price;
+    }
+    
+    Car.prototype.run = function () {
+        console.log(this.brand + "running")
+    }
+    
+    const car = new Car("qq", 5, 5);
+    
+    var a = [1, 2, 3, 4];
+    
+    function num(a) {
+        a = [5, 6, 7, 8];
+    }
+    
+    num(a)
+    console.log(a)
+    console.log(a instanceof Array)
+</script>
+</body>
+</html>

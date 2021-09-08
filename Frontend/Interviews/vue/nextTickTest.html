@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.common.dev.js"></script>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script>
+    const vm = new Vue({
+        el: "#app",
+        data() {
+            return {}
+        },
+        methods: {},
+        mounted() {
+            new Promise(resolve => {
+                console.log("Promise")
+                resolve()
+            }).then(() => {
+                console.log(123)
+            })
+            setTimeout(() => {
+                console.log(456)
+            })
+            nextTick(() => {
+                console.log("nextTick")
+            })
+        }
+    })
+</script>
+</body>
+</html>
