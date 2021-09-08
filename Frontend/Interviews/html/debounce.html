@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖和节流</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<label for="input">
+    input:
+    <input id="input" type="text">
+</label>
+<script>
+    //防抖函数
+    function debounce(time) {
+        let timer;
+        return function (val, cb) {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                cb(val)
+            }, time)
+        }
+    }
+    
+    const debounceFunc = debounce(1000)
+    
+    const input = document.getElementById('input');
+    input.addEventListener('keydown', e => {
+        debounceFunc(e.target.value, data => {
+            console.log(data)
+        })
+    })
+</script>
+</body>
+</html>

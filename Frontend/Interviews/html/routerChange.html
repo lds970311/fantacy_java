@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>js实现路由切换效果</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            overflow: hidden;
+            text-align: center;
+            width: 300px;
+            margin: 50px auto;
+        }
+        
+        ul li {
+            list-style: none;
+            float: left;
+            width: 100px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .content {
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid red;
+            line-height: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <ul>
+        <li>
+            <a href="#/html">HTML学习</a>
+        </li>
+        <li>
+            <a href="#/css">CSS学习</a>
+        </li>
+        <li>
+            <a href="#/javascript">js学习</a>
+        </li>
+    </ul>
+    <div class="content">
+    
+    </div>
+</div>
+<script>
+    class Router {
+        constructor() {
+            this.routers = {}; //保存路由
+            this.currentUrl = ""; //保存当前hash
+        }
+        
+        init() {
+            window.addEventListener('hashchange', this.reloadPage.bind(this))
+        }
+        
+        reloadPage() {
+            this.currentUrl = window.location.hash.substring(1) || '/';
+            this.routers[this.currentUrl]()
+        }
+        
+        map(key, cb) {
+            this.routers[key] = cb;
+        }
+    }
+    
+    window.myRouter = Router;
+    const router = new myRouter();
+    router.init();
+    const content = document.getElementsByClassName("content")[0]
+    router.map("/html", () => {
+        content.innerHTML = " html"
+    })
+    router.map("/css", () => {
+        content.innerHTML = " css"
+    })
+    
+    router.map("/javascript", () => {
+        content.innerHTML = " javascript"
+    })
+</script>
+</body>
+</html>

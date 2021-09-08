@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="./shakeAnti.js"></script>
+</head>
+<body>
+<button id="btn">click me</button>
+<script>
+    document.getElementById("btn").onclick = debounce(() => {
+        console.log("aaa")
+    }, 500, false)
+
+</script>
+</body>
+</html>

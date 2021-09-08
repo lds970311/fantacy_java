@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        img {
+            width: 220px;
+            display: block;
+        }
+        
+        .item {
+            box-shadow: 2px 2px 2px #999;
+            position: absolute;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<!-- html 部分 -->
+<div id="box">
+    <!--<div class="item"><img src="../image/瀑布流/001.jpg" alt=""></div>
+    <div class="item"><img src="../image/瀑布流/030.jpg" alt=""></div>-->
+</div>
+
+<script>
+    let imgList = [
+        "https://s5.mogucdn.com/mlcdn/c45406/210123_80fb475jaa3c85a2b533ake67c5jb_5000x6660.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/55cf19/201007_5ef1begkc3k33254fca8kcjk26703_640x960.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210504_2bgkjaekcgl7al11fllk576k19g2d_6157x9236.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/201005_3747744121i53l20gl7e5df72f101_4999x7499.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210713_19h2fa2ff2i7leb0iib0h1hacbc0f_750x750.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/200911_60age6f2k4ekic0ii8j550699a394_715x751.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210803_3eekh543e8ak9k1j4g4c8l0h74gd7_800x1200.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/55cf19/210401_2ihd8726caji6llkjf9j5fhjja49c_640x960.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210806_8c362g6jeab3i660l4e4fidbe4fd4_1080x1440.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/55cf19/210511_3245e1i1569k16396h8k6d26gehh8_640x960.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210306_69ilei699h450bd84cb4cha9b31jj_5732x8599.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/55cf19/210421_602kie0e85e16ie38fd7jab9g488j_750x1000.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210522_34igd3eabfal5e9i4cdlch3i2767k_640x960.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/55cf19/210122_1ge4g5l19jij5af218c6h9ig9abh7_640x960.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/201007_754i59abjh334k7ccd1klifc82hjj_4464x5999.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210319_2ck168b51342db5k6772ljhf7lgl4_3800x5000.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/200501_1iacl56kkel7e98flhg8h510gkdhb_640x961.jpg_500x9999.v1c7E.81.webp",
+        "https://s5.mogucdn.com/mlcdn/c45406/210710_07bbcac5443i981l5alh45ilab6a4_640x960.jpg_500x9999.v1c7E.81.webp"
+    ]
+    
+    //创建图片元素
+    for (let i = 0; i < imgList.length; i++) {
+        let img = $(` <div class="item"><img src=${imgList[i]} alt=""></div>`)
+        $("#box").append(img)
+    }
+    
+    // 定义每一列之间的间隙 为10像素
+    const gap = 10;
+    
+    window.onload = function () {
+        
+        waterfall()
+        
+        function waterfall() {
+            const items = $("#box").children()
+            const pageWidth = getClient().width;
+            const itemWidth = items[0].offsetWidth;
+            // 1- 确定列数  = 页面的宽度 / 图片的宽度
+            const columns = parseInt(pageWidth / (itemWidth + gap));
+            const arr = [];
+            $.each(items, (index, element) => {
+                if (index < columns) {
+                    $(element).css({
+                        top: 0,
+                        left: (itemWidth + gap) * index
+                    })
+                    arr.push(element.offsetHeight)
+                } else {
+                    //其他行
+                    // 3- 找到数组中最小高度  和 它的索引
+                    let minHeight = arr[0];
+                    let minIndex = 0;
+                    for (let j = 0; j < arr.length; j++) {
+                        if (minHeight > arr[j]) {
+                            minHeight = arr[j];
+                            minIndex = j;
+                        }
+                    }
+                    // 4- 设置下一行的第一个盒子位置
+                    // top值就是最小列的高度 + gap
+                    $(element).css({
+                        top: arr[minIndex] + gap,
+                        left: items[minIndex].offsetLeft
+                    })
+                    // 5- 修改最小列的高度
+                    // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
+                    arr[minIndex] = arr[minIndex] + items[index].offsetHeight + gap;
+                }
+            })
+        }
+        
+        window.onresize = () => {
+            waterfall()
+        }
+        
+        //当加载到最后一张的时候,加载更多图片
+        window.onscroll = () => {
+            const items = $("#box").children()
+            if (getClient().height + getScrollTop() >= items[items.length - 1].offsetTop) {
+                console.log("aaa")
+                //模拟从后台请求的数据
+                const data = [
+                    "https://s5.mogucdn.com/mlcdn/c45406/210123_80fb475jaa3c85a2b533ake67c5jb_5000x6660.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/55cf19/201007_5ef1begkc3k33254fca8kcjk26703_640x960.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210504_2bgkjaekcgl7al11fllk576k19g2d_6157x9236.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/201005_3747744121i53l20gl7e5df72f101_4999x7499.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210713_19h2fa2ff2i7leb0iib0h1hacbc0f_750x750.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/200911_60age6f2k4ekic0ii8j550699a394_715x751.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210803_3eekh543e8ak9k1j4g4c8l0h74gd7_800x1200.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/55cf19/210401_2ihd8726caji6llkjf9j5fhjja49c_640x960.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210806_8c362g6jeab3i660l4e4fidbe4fd4_1080x1440.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/55cf19/210511_3245e1i1569k16396h8k6d26gehh8_640x960.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210306_69ilei699h450bd84cb4cha9b31jj_5732x8599.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/55cf19/210421_602kie0e85e16ie38fd7jab9g488j_750x1000.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210522_34igd3eabfal5e9i4cdlch3i2767k_640x960.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/55cf19/210122_1ge4g5l19jij5af218c6h9ig9abh7_640x960.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/201007_754i59abjh334k7ccd1klifc82hjj_4464x5999.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210319_2ck168b51342db5k6772ljhf7lgl4_3800x5000.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/200501_1iacl56kkel7e98flhg8h510gkdhb_640x961.jpg_500x9999.v1c7E.81.webp",
+                    "https://s5.mogucdn.com/mlcdn/c45406/210710_07bbcac5443i981l5alh45ilab6a4_640x960.jpg_500x9999.v1c7E.81.webp"
+                ]
+                for (let i = 0; i < data.length; i++) {
+                    let element = $(`<div class="item"><img src=${data[i]} alt=""></div>`)
+                    $("#box").append(element)
+                }
+                waterfall()
+            }
+        }
+    }
+    
+    
+    //兼容性处理
+    function getClient() {
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+    }
+    
+    function getScrollTop() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+    }
+</script>
+</body>
+</html>

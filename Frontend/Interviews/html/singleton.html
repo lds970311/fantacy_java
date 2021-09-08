@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包实现单例模式</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<button id="btn">登录</button>
+<script>
+    console.log(window)
+    const createLogin = function (a, b, c) {
+        console.log(a, b, c)
+        const div = document.createElement('div')
+        div.innerHTML = "登录弹窗"
+        div.style.display = "none"
+        document.body.appendChild(div)
+        return div
+    }
+    
+    const getSingle = function (cb) {
+        let result;
+        return function () {
+            return result || (result = cb.apply(this, arguments))
+        }
+    }
+    
+    const create = getSingle(createLogin)
+    document.getElementById("btn").onclick = () => {
+        const element = create(1, 2, 3)
+        element.style = {
+            display: "block",
+            color: "red"
+        }
+    }
+</script>
+</body>
+</html>
