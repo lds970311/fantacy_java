@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #box {
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+
+        button {
+            margin-top: 30px;
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button id="btn">获取数据</button>
+<script src="https://www.zhipin.com/wapi/zpCommon/data/position.json?callback=jsonp"></script>
+<script>
+    /*  $("#btn").on("click", function () {
+          $.ajax({
+              url: "https://www.zhipin.com/wapi/zpCommon/data/position.json",
+              type: "get",
+              dataType: "jsonp",
+              success: function (res) {
+                  console.log(res)
+              },
+              error: function (err) {
+                  console.log(err)
+              }
+          })
+      })*/
+    function jsonp(data) {
+        console.log(data);
+    }
+</script>
+</body>
+</html>
