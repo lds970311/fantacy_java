@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>写一个函数，第一秒打印1，第二秒打印2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<script>
+    for (let i = 0; i < 2; i++) {
+        (function (time) {
+            setTimeout(() => {
+                console.log(i + 1)
+            }, 1000 * i)
+        })(i)
+    }
+</script>
+</body>
+</html>
