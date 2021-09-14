@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+
+    Person.prototype.eat = function () {
+        console.log(this.name + "eating")
+    }
+
+    let p = new Person('lee', 21)
+    console.log(p)
+</script>
+</body>
+</html>
