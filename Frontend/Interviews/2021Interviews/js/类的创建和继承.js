@@ -51,5 +51,9 @@ function Tiger(name) {
     this.name = name || 'tiger'
 }
 
-Tiger.prototype = new Animal()
+Tiger.prototype = Object.create(Animal.prototype)
 Tiger.prototype.constructor = Tiger;
+
+let tiger = new Tiger('lh');
+tiger.sleep()
+tiger.eat('meat')
