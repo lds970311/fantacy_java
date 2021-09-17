@@ -5,6 +5,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/FrameWorks/Angular/angular-first/dist" />
       <excludeFolder url="file://$MODULE_DIR$/FrameWorks/Angular/angular-first/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/FrameWorks/Angular/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/Interviews/.idea/inspectionProfiles" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

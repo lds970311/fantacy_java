@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
       <excludeFolder url="file://$MODULE_DIR$/Frontend/FrameWorks/Angular/angular-first/dist" />
       <excludeFolder url="file://$MODULE_DIR$/Frontend/FrameWorks/Angular/angular-first/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/leetcode" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
