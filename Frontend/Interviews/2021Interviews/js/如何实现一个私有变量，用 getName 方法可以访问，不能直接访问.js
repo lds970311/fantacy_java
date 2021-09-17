@@ -1,13 +1,11 @@
-obj = {
-    name: 'yuxiaoliang',
-    getName: function () {
-        return this.name
+class Obj {
+    constructor() {
+        this.name = "haha"
+        this.getName = function () {
+            return this.name
+        }
     }
 }
 
-Object.defineProperty(obj, 'name', {
-    enumerable: false,
-    configurable: false
-})
-
+let obj = new Obj();
 console.log(obj.name)
