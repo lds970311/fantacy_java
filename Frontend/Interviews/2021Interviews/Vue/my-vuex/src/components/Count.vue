@@ -1,25 +1,32 @@
 <template>
-  <div class="count">
-    <!--    <h1>当前求和为:{{ $store.state.num }} </h1>-->
-    <h1>当前求和为:{{ getNum }} </h1>
-    <h1>当前求和 x 10 为:{{ bigSum }} </h1>
-    <select name="sum" id="sum" ref="selectRef">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-    <button @click="handleAdd($refs.selectRef.value)">+</button>
-    <button @click="handleSub($refs.selectRef.value)">-</button>
-    <button @click="addIfOdd($refs.selectRef.value)">奇数再加</button>
-    <button @click="addAsync($refs.selectRef.value)">等等再加</button>
+  <div class="main">
+    <div class="count">
+      <!--    <h1>当前求和为:{{ $store.state.num }} </h1>-->
+      <h1>当前求和为:{{ num }} </h1>
+      <h1>当前求和 x 10 为:{{ bigSum }} </h1>
+      <h3 style="color: red">Person人数为:{{ personList.length }}</h3>
+      <select id="sum" ref="selectRef" name="sum">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <button @click="handleAdd($refs.selectRef.value)">+</button>
+      <button @click="handleSub($refs.selectRef.value)">-</button>
+      <button @click="addIfOdd($refs.selectRef.value)">奇数再加</button>
+      <button @click="addAsync($refs.selectRef.value)">等等再加</button>
+    </div>
+    <hr/>
+    <Person></Person>
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
+import Person from "@/components/Person";
 
 export default {
   name: "Count",
+  components: {Person},
   data() {
     return {}
   },
@@ -42,17 +49,16 @@ export default {
       const val = this.$refs.selectRef.value
       this.$store.dispatch('addAsync', val)
     }*/
-    ...mapActions(['addIfOdd', 'addAsync']),
+    ...mapActions('countOptions', ['addIfOdd', 'addAsync']),
     ...mapMutations({
-      handleAdd: 'add',
-      handleSub: 'sub',
+      handleAdd: 'countOptions/add',
+      handleSub: 'countOptions/sub',
     })
   },
   computed: {
-    ...mapState({
-      getNum: 'num'
-    }),
-    ...mapGetters(['bigSum'])
+    ...mapState('countOptions', ['num']),
+    ...mapState('personOptions', ['personList']),
+    ...mapGetters('countOptions', ['bigSum'])
   },
   mounted() {
     console.log(this.$refs.selectRef.value)
