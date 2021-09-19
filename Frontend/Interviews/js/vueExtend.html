@@ -21,18 +21,17 @@
             }
         }
     })
-    
+
     const Loading = () => {
         const div = document.createElement('div');
         div.setAttribute("id", "loading");
         document.body.appendChild(div);
         new loadingComponent({}).$mount("#loading")
-        
+
         return () => {
             document.getElementById("loading").style.display = "none"
         }
     }
-    
     Vue.prototype.$loading = Loading
     const vm = new Vue({
         el: "#root",
@@ -43,7 +42,7 @@
         methods: {
             showLoading() {
                 const hide = this.$loading();
-                
+
                 setTimeout(() => {
                     hide()
                 }, 1500)

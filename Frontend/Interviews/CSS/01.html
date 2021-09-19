@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        div.demo {
+            color: black;
+        }
+
+        div.wrap .demo {
+            color: yellow;
+        }
+
+        div.wrap > .demo {
+            color: blue;
+        }
+
+        div.wrap + .demo {
+            color: red;
+        }
+
+        div.demo + .demo {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<img alt="" src="">
+<script>
+
+    function Foo() {
+        'use strict'
+        console.log(this.location);
+    }
+
+    Foo()
+</script>
+</body>
+</html>

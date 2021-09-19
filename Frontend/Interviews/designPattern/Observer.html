@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者模式</title>
+    <style>
+        .container {
+            width: 400px;
+            background-color: mediumpurple;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            padding: 30px
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: indianred;
+        }
+
+        input {
+            width: 80%;
+            border-radius: 5px
+        }
+
+        .boxes {
+            margin: 30px auto;
+            width: 80%;
+        }
+
+        .box {
+            width: 100%;
+            height: 40px;
+            background-color: #e5e6e4;
+            border-radius: 10px;
+            margin-bottom: 7px;
+            line-height: 40px;
+            font-weight: bold;
+        }
+
+        .active {
+            background-color: #d2561c;
+            color: #e5e6e4;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h2>观察者模式实现</h2>
+    <label>
+        <input type="text">
+    </label>
+    <div class="boxes">
+        <!-- <div class="box" id="a">包含a</div>
+         <div class="box" id="b">包含b</div>-->
+    </div>
+</div>
+<script type="text/javascript">
+    /* const ipt = document.querySelector("input");
+     ipt.addEventListener("input", function () {
+         document.querySelector("#a")
+             .classList.toggle("active", this.value.indexOf("a") !== -1);
+
+         document.querySelector("#b")
+             .classList.toggle("active", this.value.indexOf("b") !== -1);
+     })*/
+
+    class Input {
+        constructor(el) {
+            this.observers = [];
+            el.addEventListener("input", e => {
+                this.notifyAll(e.target.value);
+            })
+        }
+
+        notifyAll(value) {
+            this.observers.forEach(ob => {
+                ob.notify(value)
+            })
+        }
+
+        addObserver(observer) {
+            this.observers.push(observer)
+        }
+    }
+
+    class Observer extends DocumentFragment {
+        constructor(txt) {
+            super();
+            this.div = document.createElement("div")
+            this.div.className = "box"
+            this.div.innerText = txt;
+            document.querySelector(".boxes").appendChild(this.div)
+        }
+
+        notify(value) {
+            this.div.classList.toggle('active', this.handle(value))
+        }
+    }
+
+    class DefaultObserver extends Observer {
+        constructor(txt) {
+            super(txt);
+            this.txt = txt;
+        }
+
+        handle(value) {
+            return value.indexOf(this.txt) !== -1
+        }
+    }
+
+    class NumberObserver extends Observer {
+        constructor(txt) {
+            super(txt);
+        }
+
+        handle(value) {
+            return /\d/.test(value)
+        }
+    }
+
+    const ipt = new Input(document.querySelector("input"));
+    ipt.addObserver(new DefaultObserver("a"));
+    ipt.addObserver(new DefaultObserver("b"));
+    ipt.addObserver(new DefaultObserver("c"));
+    ipt.addObserver(new NumberObserver('包含数字'))
+
+</script>
+</body>
+</html>
