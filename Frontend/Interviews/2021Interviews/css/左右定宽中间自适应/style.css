@@ -1,0 +1,26 @@
+.center {
+    width: calc(100% - 400px);
+    background-color: cornflowerblue;
+    height: 500px;
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+
+.left {
+    width: 200px;
+    background: green;
+    height: 500px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.right {
+    width: 200px;
+    background-color: hotpink;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
