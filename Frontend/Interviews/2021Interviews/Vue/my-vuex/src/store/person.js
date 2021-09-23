@@ -41,7 +41,7 @@ const personOptions = {
         firstName(state) {
             return state.personList[0].name
         }
-    }
+    },
 }
 
 export default personOptions
