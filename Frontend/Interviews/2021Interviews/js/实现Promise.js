@@ -43,6 +43,7 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
             that.onRejectedList.push(() => {
                 onRejected(that.reason)
             })
+            break;
         case "resolved":
             onFulfilled(that.value);
             break;

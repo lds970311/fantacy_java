@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>表单校验策略</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .my-form {
+            width: 400px;
+            margin: 50px auto;
+            text-align: justify
+        }
+
+        .my-form label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 15px;
+        }
+
+        .my-form label input {
+            width: 280px;
+        }
+    </style>
+</head>
+<body>
+<div class="my-form">
+    <form action="">
+        <label for="usrName">
+            <span>请输入用户名:</span>
+            <input type="text" id="usrName" name="usrName">
+        </label>
+        <label for="pwd">
+            <span>请输入密码: </span>
+            <input type="password" id="pwd" name="password">
+        </label>
+        <label for="email">
+            <span>请输入邮箱: </span>
+            <input type="text" id="email" name="email">
+        </label>
+        <label for="tel">
+            <span>请输入手机号: </span>
+            <input type="text" id="tel" name="tel">
+        </label>
+        <button type="submit">提交表单</button>
+    </form>
+</div>
+<script src="./StrategyMode.js"></script>
+</body>
+</html>
