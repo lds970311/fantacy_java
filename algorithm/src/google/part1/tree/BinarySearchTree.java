@@ -36,16 +36,7 @@ public class BinarySearchTree<T> implements IBinarySearchTree<T> {
 
     @Override
     public void add(T element) {
-        this.elementNullCheck(element);
-        if (root == null) {
-            //添加第一个节点
-            this.root = new TreeNode<>(element, null);
-            size++;
-        } else {
-            //找到父节点
-            TreeNode<T> parent = root;
-            TreeNode<T> node = root;
-        }
+
     }
 
     @Override
@@ -56,22 +47,6 @@ public class BinarySearchTree<T> implements IBinarySearchTree<T> {
     @Override
     public boolean contains(T element) {
         return false;
-    }
-
-    /**
-     * @return 返回值等于0，代表e1和e2相等；返回值大于0，代表e1大于e2；返回值小于于0，代表e1小于e2
-     */
-    private int compare(T e1, T e2) {
-        if (comparator != null) {
-            return comparator.compare(e1, e2);
-        }
-        return ((Comparable<T>) e1).compareTo(e2);
-    }
-
-    private void elementNullCheck(T element) {
-        if (element == null) {
-            throw new NullPointerException("element can not be null!");
-        }
     }
 
     private static class TreeNode<T> {

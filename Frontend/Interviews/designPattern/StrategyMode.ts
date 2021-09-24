@@ -3,24 +3,24 @@
  */
 
 const ruleMap = {
-    notNull(val: string, msg: string): string {
+    notNull(val: string, msg: string): string | undefined {
         if (!val.trim()) {
             return msg;
         }
     },
-    isEmail(val: string, msg: string): string {
+    isEmail(val: string, msg: string): string | undefined {
         const ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         if (!ePattern.test(val)) {
             return msg;
         }
     },
-    isPassword(val: string, msg: string): string {
+    isPassword(val: string, msg: string): string | undefined {
         const pPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
         if (!pPattern.test(val)) {
             return msg;
         }
     },
-    isTel(val: string, msg: string): string {
+    isTel(val: string, msg: string): string | undefined {
         const mPattern = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
         if (!mPattern.test(msg)) {
             return msg;
@@ -36,7 +36,8 @@ class Validator {
         this.caches = []
     }
 
-    addRules(ruleKey: string, ...args): void {
+    addRules(ruleKey: string, ...args: (FormDataEntryValue | null)[]): void {
+        // @ts-ignore
         const ruleFunc = ruleMap[ruleKey]
         this.caches.push(function () {
             return ruleFunc(...args)
@@ -44,9 +45,9 @@ class Validator {
     }
 
     validate() {
-        const errList = [];
+        const errList: string[] = [];
         this.caches.forEach(fn => {
-                const result = fn();
+            const result = fn();
                 if (result) {
                     //说明有错误信息
                     errList.push(result)
@@ -62,7 +63,7 @@ class Validator {
 }
 
 //表单绑定提交事件
-const form: HTMLFormElement = document.querySelector(".my-form form")
+const form: HTMLFormElement = document.querySelector(".my-form form")!
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();

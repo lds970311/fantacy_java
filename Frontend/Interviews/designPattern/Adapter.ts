@@ -16,7 +16,7 @@ const baiduMap = {
 }
 
 //已有的渲染接口
-const renderMap = function (map) {
+const renderMap = function (map: any) {
     if (map.show instanceof Function) {
         map.show()
     }
