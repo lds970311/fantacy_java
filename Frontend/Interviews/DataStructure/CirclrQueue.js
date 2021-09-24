@@ -5,7 +5,6 @@ class CircleQueue {
         this.last = 0;
         this.size = 0;
     }
-
     enQueue(item) {
         if (this.first === (this.last + 1) % this.queue.length) {
             this.resize(this.getLength() * 2 + 1);
@@ -14,7 +13,6 @@ class CircleQueue {
         this.size++;
         this.last = (this.last + 1) % this.queue.length;
     }
-
     deQueue() {
         if (this.isEmpty()) {
             throw new Error("queue is empty!");
@@ -28,15 +26,23 @@ class CircleQueue {
         }
         return ele;
     }
-
     getHeader() {
         if (!this.isEmpty()) {
             return this.queue[this.first];
-        } else {
+        }
+        else {
             throw new Error("queue is empty");
         }
     }
-
+    isEmpty() {
+        return this.size === 0;
+    }
+    getLength() {
+        return this.queue.length - 1;
+    }
+    getSize() {
+        return this.size;
+    }
     resize(newLength) {
         let queue = new Array(newLength);
         for (let i = 0; i < this.size; i++) {
@@ -46,20 +52,7 @@ class CircleQueue {
         this.first = 0;
         this.last = this.size;
     }
-
-    isEmpty() {
-        return this.size === 0;
-    }
-
-    getLength() {
-        return this.queue.length - 1;
-    }
-
-    getSize() {
-        return this.size;
-    }
 }
-
 let circleQueue = new CircleQueue(4);
 circleQueue.enQueue(1);
 circleQueue.enQueue(3);

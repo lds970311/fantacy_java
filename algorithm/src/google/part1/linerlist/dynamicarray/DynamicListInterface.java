@@ -1,9 +1,4 @@
 package google.part1.linerlist.dynamicarray;
-// Author : CSR丶SUSE
-// Time ： 2021/8/29  0:31
-// TOOLS : INTELLIJ IDEA
-// FILENAME : DynamicListInterface.java
-// STATEMENT: 
 
 public interface DynamicListInterface<T> {
     int size();

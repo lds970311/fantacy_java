@@ -1,11 +1,5 @@
 package google.part1.linerlist.linkedlist;
 
-// Author : CSR丶SUSE
-// Time ： 2021/8/29  20:21
-// TOOLS : INTELLIJ IDEA
-// FILENAME : MyLinkedList.java
-// STATEMENT: 
-
 
 import google.part1.linerlist.dynamicarray.DynamicListInterface;
 

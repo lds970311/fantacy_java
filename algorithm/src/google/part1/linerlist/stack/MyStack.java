@@ -18,18 +18,30 @@ public class MyStack<T> {
         this.list = new MyLinkedList<T>();
     }
 
+    /**
+     * @param element: elemet add to stack
+     */
     public void push(T element) {
         list.add(0, element);
     }
 
+    /**
+     * @return The first element which deleted
+     */
     public T pop() {
         return list.removeElement(0);
     }
 
+    /**
+     * @return : the first element of stack
+     */
     public T peek() {
         return list.get(0);
     }
 
+    /**
+     * @return is stack empty
+     */
     public boolean isEmpty() {
         return this.list.isEmpty();
     }
