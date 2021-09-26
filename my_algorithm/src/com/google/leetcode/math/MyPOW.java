@@ -48,4 +48,16 @@ public class MyPOW {
     public void test() {
         System.out.println(myPow(-2, 3));
     }
+
+    @Test
+    public void myA() {
+        Integer a = 1;
+        Integer b = 1;
+        Integer c = 500;
+        Integer d = 500;
+        System.out.print(a == b);
+        System.out.print(c == d);
+
+    }
 }
+
