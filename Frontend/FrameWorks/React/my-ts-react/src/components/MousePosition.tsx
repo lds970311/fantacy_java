@@ -1,24 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import useMousePosition from "../hooks/useMousePosition";
 
 const MousePosition: React.VoidFunctionComponent = () => {
-    const [position, setPosition] = useState({
-        X: 0,
-        Y: 0
-    })
-
-    function handleMouseMove(event: MouseEvent) {
-        setPosition({
-            X: event.clientX,
-            Y: event.clientY
-        })
-    }
-
-    useEffect(() => {
-        window.addEventListener("mousemove", handleMouseMove)
-        return function () {
-            window.removeEventListener("mousemove", handleMouseMove)
-        }
-    }, [position])
+    const position = useMousePosition();
     return (
         <div>
             <p>X:{position.X}, Y:{position.Y}</p>
