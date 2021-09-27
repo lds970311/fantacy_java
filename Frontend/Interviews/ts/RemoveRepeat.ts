@@ -21,10 +21,12 @@ console.log(numbers); //[ 1, 2, 3, 4, 5, 9 ]
 
 
 //方式2
+// @ts-ignore
 arr = [...new Set(arr)]
 console.log(arr)
 
 
 //方式3
+// @ts-ignore
 arr = Array.from(new Set(arr))
 console.log(arr)

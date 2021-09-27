@@ -9,6 +9,7 @@ Function.prototype.myCall = function (ctx) {
     }
     ctx = ctx || window
     ctx.fn = this;
+    // @ts-ignore
     const args = [...arguments].slice(1);
     const result = ctx.fn(...args)
     delete ctx.fn
@@ -39,11 +40,14 @@ Function.prototype.myBind = function (ctx) {
         throw new Error("Error")
     }
     const that = this
+    // @ts-ignore
     const args = [...arguments].slice(1)
     return function F() {
         if (this instanceof F) {
+            // @ts-ignore
             return new that(...args, ...arguments)
         }
+        // @ts-ignore
         return that.apply(ctx, args.concat(...arguments))
     }
 }

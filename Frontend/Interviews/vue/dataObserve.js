@@ -29,12 +29,12 @@ class Dep {
         this.subs = [];
     }
     addSub(sub) {
-        console.log("get 调佣, 添加到订阅");
+        console.log("get ???, ????????");
         this.subs.push(sub);
     }
     notify() {
         this.subs.forEach(sub => {
-            console.log("set调用了, update");
+            console.log("set??????, update");
             sub.update();
         });
     }

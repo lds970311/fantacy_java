@@ -30,6 +30,7 @@ function reduce(callBack: Function, arr: Array<unknown>, initialValue?: number):
     return result;
 }
 
+// @ts-ignore
 const arr = [1, 2, 3, 4]
 map(arr, item => {
     console.log(item)

@@ -11,5 +11,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="vue.common.dev" level="application" />
     <orderEntry type="library" name="vue.common.dev" level="application" />
+    <orderEntry type="library" name="lodash.core" level="application" />
   </component>
 </module>

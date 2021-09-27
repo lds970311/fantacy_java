@@ -4,17 +4,18 @@ class VirtualDom {
         this.props = props;
         if (Array.isArray(children)) {
             this.children = children;
-        } else {
+        }
+        else {
             this.key = children;
             this.children = null;
         }
         if (key) {
             this.key = key;
-        } else {
+        }
+        else {
             this.key = "";
         }
     }
-
     createElement(tag, props, child, key) {
         let el = document.createElement(tag);
         for (const key in props) {
@@ -31,7 +32,8 @@ class VirtualDom {
                 let child;
                 if (element instanceof VirtualDom) {
                     child = this.createElement(element.tag, element.props, element.children, element.key);
-                } else {
+                }
+                else {
                     child = document.createTextNode(typeof element === "string" ? element : "");
                 }
                 el.appendChild(child);
@@ -40,5 +42,4 @@ class VirtualDom {
         return el;
     }
 }
-
 //# sourceMappingURL=VitrualDom.js.map

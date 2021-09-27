@@ -10,3 +10,4 @@ const getSymmetryNum = function (start: number, end: number): void {
 }
 
 getSymmetryNum(1, 10000)
+
