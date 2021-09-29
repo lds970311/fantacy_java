@@ -1,0 +1,20 @@
+{
+  "name": "ast",
+  "version": "1.0.0",
+  "description": "ast探究",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "abstract",
+    "sytax",
+    "tree"
+  ],
+  "author": "evan lee",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "babel-types": "^6.26.0"
+  }
+}
