@@ -4,8 +4,11 @@
 
 Function.prototype.myBind = function (context, ...args) {
     let that = this;
+    if (typeof this !== "function") {
+        throw new TypeError("Error");
+    }
     return function () {
-        return that.apply(context, args);
+        return that.apply(context, args.concat(...arguments));
     }
 }
 
