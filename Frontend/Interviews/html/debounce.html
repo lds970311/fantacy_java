@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>防抖和节流</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" user-scalable="no">
 </head>
 <body>
 <label for="input">
@@ -21,9 +21,9 @@
             }, time)
         }
     }
-    
+
     const debounceFunc = debounce(1000)
-    
+
     const input = document.getElementById('input');
     input.addEventListener('keydown', e => {
         debounceFunc(e.target.value, data => {
