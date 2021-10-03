@@ -10,6 +10,7 @@
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
+      <button @click="showAlert">点我显示弹窗</button>
       <button @click="handleAdd($refs.selectRef.value)">+</button>
       <button @click="handleSub($refs.selectRef.value)">-</button>
       <button @click="addIfOdd($refs.selectRef.value)">奇数再加</button>
@@ -23,6 +24,7 @@
 <script>
 import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 import Person from "@/components/Person";
+import countMixin from "@/mixins/countMinin";
 
 export default {
   name: "Count",
@@ -30,6 +32,7 @@ export default {
   data() {
     return {}
   },
+  mixins: [countMixin],
   methods: {
     /*handleAdd() {
       const val = this.$refs.selectRef.value
@@ -49,6 +52,9 @@ export default {
       const val = this.$refs.selectRef.value
       this.$store.dispatch('addAsync', val)
     }*/
+    showAlert() {
+      this.showInfo();
+    },
     ...mapActions('countOptions', ['addIfOdd', 'addAsync']),
     ...mapMutations({
       handleAdd: 'countOptions/add',

@@ -8,21 +8,26 @@
     <ul>
       <li v-for="p in personList" :key="p.id">{{ p.name }}</li>
     </ul>
+    <p v-dateformat>{{ date }}</p>
   </div>
 </template>
 
 <script>
-import {mapState, mapGetters} from "vuex";
+import {mapGetters, mapState} from "vuex";
 
 export default {
   name: "Person",
   data() {
     return {
-      name: ''
+      name: '',
+      date: ""
     }
   },
   mounted() {
     this.$store.dispatch('personOptions/addFromBack')
+    this.timer = setTimeout(() => {
+      this.date = new Date();
+    }, 1000)
   },
   methods: {
     add: function (name) {
@@ -34,6 +39,9 @@ export default {
     ...mapState('personOptions', ['personList']),
     ...mapState('countOptions', ['num']),
     ...mapGetters('personOptions', ['firstName'])
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer)
   }
 }
 </script>
