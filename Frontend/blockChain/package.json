@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "blockChain",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "evan lee",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.2"
+  }
+}

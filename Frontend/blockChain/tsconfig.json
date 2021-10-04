@@ -1,0 +1,22 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "sourceMap": true,
+    "strict": true
+  },
+  "outDir": "./dist",
+  //模块化规范
+  "lib": [
+    "ES6",
+    "DOM",
+    "ESNext.BigInt",
+    "ES2018.Regexp"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
