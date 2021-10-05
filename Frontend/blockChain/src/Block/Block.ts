@@ -1,19 +1,25 @@
 //区块
 
 const sha256 = require('crypto-js/sha256');
+// @ts-ignore
+const {formatDate} = require("../utils")
+
 
 // @ts-ignore
 class Block {
-    private _data: string //区块的数据
+    // private _data: string //区块的数据
     private _previousHash: string //前一个区块的hash值
     private _hash: string //当前区块的hash值
     private _nonce: number
+    private _transaction: Array<Object>;
+    private _timestamp: string
 
-    constructor(data: string, previousHash: string = "") {
-        this._data = data
+    constructor(transaction: Array<Object>, previousHash: string = "") {
+        this._transaction = transaction
         this._previousHash = previousHash
         this._hash = this.computeHash()
         this._nonce = 1; //随机数
+        this._timestamp = formatDate(Date.now());
     }
 
 
@@ -21,16 +27,26 @@ class Block {
         return this._nonce;
     }
 
+
+    get timestamp(): string {
+        return this._timestamp;
+    }
+
+    set timestamp(value: string) {
+        this._timestamp = value;
+    }
+
     set nonce(value: number) {
         this._nonce = value;
     }
 
-    get data(): string {
-        return this._data;
+
+    get transaction(): Array<Object> {
+        return this._transaction;
     }
 
-    set data(value: string) {
-        this._data = value;
+    set transaction(value: Array<Object>) {
+        this._transaction = value;
     }
 
     get previousHash(): string {
@@ -53,7 +69,7 @@ class Block {
      * 计算hash值
      */
     computeHash(): string {
-        return sha256(this._data + this._previousHash + this._nonce).toString()
+        return sha256(JSON.stringify(this._transaction) + this._previousHash + this._nonce + this._timestamp).toString()
     }
 
     /**

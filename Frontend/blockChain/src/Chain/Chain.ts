@@ -1,19 +1,33 @@
 // @ts-ignore
 const Block = require("../Block/Block")
+// @ts-ignore
+const {Transaction} = require("../Transaction/Transaction")
+
 
 //区块的链
 class Chain {
-    private _chain: Array<Block>;
+    private readonly _chain: Array<Block>;
     private _difficulty: number
+    private _transactionPool: Array<any>
+    private _minerReward: number
 
     constructor() {
         this._chain = [this.bigBang()]
         this._difficulty = 4; //当前区块链的难度系数
+        this._transactionPool = [];
+        this._minerReward = 50; //矿工奖励
     }
 
     bigBang() {
         //生成创世区块
-        return new Block("Ancestor Block", "")
+        return new Block([
+            new Transaction(
+                "",
+                "",
+                0,
+                Date.now()
+            )
+        ], "")
     }
 
     get chain(): Array<Block> {
@@ -25,12 +39,31 @@ class Chain {
     }
 
 
+    get minerReward(): number {
+        return this._minerReward;
+    }
+
+    set minerReward(value: number) {
+        this._minerReward = value;
+    }
+
     get difficulty(): number {
         return this._difficulty;
     }
 
     set difficulty(value: number) {
         this._difficulty = value;
+    }
+
+
+    // @ts-ignore
+    get transactionPool(): Array<Transaction> {
+        return this._transactionPool;
+    }
+
+    // @ts-ignore
+    set transactionPool(value: Array<Transaction>) {
+        this._transactionPool = value;
     }
 
     /**
@@ -45,6 +78,26 @@ class Chain {
         newBlock.mine(this.difficulty);
         // newBlock.hash = newBlock.computeHash();
         this._chain.push(newBlock)
+    }
+
+    mineTransactionPool(minerRewardAddress: string) {
+        //发放矿工奖励
+        const minerRewardTransaction = new Transaction("", minerRewardAddress, this.minerReward, Date.now())
+        this._transactionPool.push(minerRewardTransaction)
+        //挖矿
+        const newBlock = new Block(
+            this._transactionPool,
+            this.getLastBlock().hash
+        )
+        newBlock.mine(this.difficulty)
+        //挖出的区块到区块链上
+        this._chain.push(newBlock)
+        this._transactionPool.length = 0;
+    }
+
+    // @ts-ignore
+    addTransaction(transaction: Transaction) {
+        this._transactionPool.push(transaction)
     }
 
     /**
