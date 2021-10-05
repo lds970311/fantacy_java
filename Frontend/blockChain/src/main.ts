@@ -2,22 +2,22 @@ export {}
 // @ts-ignore
 const Block = require("./Block/Block.ts");
 const Chain = require("./Chain/Chain.ts")
+const {Transaction} = require("./Transaction/Transaction.ts")
+const {formatDate} = require("./utils")
 
-let myBlock = new Block("transfer 10 dollars", "123456789");
-const myBlock1 = new Block("transfer 1000 dollars to Tom");
+//创建transaction
+const t1 = new Transaction("Tom", "Jack", 5000, Date.now());
+const t2 = new Transaction("Lee", "wang", 6000, Date.now());
+const t3 = new Transaction("Sam", "evan", 5620, Date.now());
+const t4 = new Transaction("Herry", "Naruto", 5510, Date.now());
+console.log(formatDate(t1.timestamp))
 
-const chain = new Chain()
-chain.addBlockToChain(myBlock)
-chain.addBlockToChain(myBlock1)
 
+const coin = new Chain()
+coin.addTransaction(t2)
+coin.addTransaction(t4)
+coin.mineTransactionPool("addressThree")
 
-//篡改数据
-// myBlock.data = "transfer 50 dollars"
-// chain.chain[2].previousHash = chain.chain[2].computeHash()
-chain.chain[2].data = "转账300元"
-chain.chain[2].mine(4);
-console.log(chain)
-//测试区块是否合法
-console.log(chain.validateChain());
-
+console.log(coin)
+console.log(coin.chain[1])
 
