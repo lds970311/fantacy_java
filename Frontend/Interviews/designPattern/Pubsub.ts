@@ -2,7 +2,7 @@
 
 declare interface IPubsub {
     list: Array<unknown>,
-    addListener: (key: string, fn: Function) => void,
+    addListener: (key: string | number, fn: Function) => void,
     publish: () => void
     removeListener: (key: string, fn: Function) => void | false
 }
@@ -34,21 +34,11 @@ const shopObj: IPubsub = {
 
     removeListener(key: string, fn?: Function | null): void | false {
         const fns = this.list[key]
-        if (fn === null) {
-            fns.length = 0;
-            return
+        if (fns) {
+            // @ts-ignore
+            this.list[key] = fn === null ? [] || this.fns.filter(item => item != fn)
         }
-        if (!fns) {
-            fns && (fns.length = 0);
-            return false
-        } else {
-            for (let i = fns.length - 1; i >= 0; i--) {
-                let _fn = fns[i]
-                if (_fn === fn) {
-                    fns.splice(i, 1)
-                }
-            }
-        }
+
     }
 
 }

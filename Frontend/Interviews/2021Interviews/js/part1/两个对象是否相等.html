@@ -6,58 +6,8 @@
 </head>
 <body>
 <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.core.js"></script>
-<script>
-    const o1 = {
-        name: "abc",
-        age: 12,
-        cars: [{
-            brand: "toyota",
-            price: 100,
-            years: 5
-        }, {
-            brand: "audi",
-            price: 54,
-            years: 3
-        }]
-    }
+<script src="isEqualObject.js">
 
-    const o2 = {
-        name: "abc",
-        age: 12,
-        cars: [{
-            brand: "toyota",
-            price: 100,
-            years: 5
-        }, {
-            brand: "audi",
-            price: 54,
-            years: 3
-        }]
-    }
-
-    // console.log(JSON.stringify(o1) === JSON.stringify(o2));
-
-    function isEqualObject(o1, o2) {
-        let k1 = Object.keys(o1)
-        let k2 = Object.keys(o2)
-        console.log(o1, o2)
-        if (k1.length !== k2.length) {
-            return false
-        }
-
-        for (let i = 0; i < k1.length; i++) {
-            let key = k1[i];
-            if (!k2.includes(key)) {
-                return false
-            }
-            if (o1[key] !== o2[key]) {
-                return false
-            }
-        }
-        return true
-    }
-
-    console.log(isEqualObject(o1, o2))
 </script>
 </body>
 </html>

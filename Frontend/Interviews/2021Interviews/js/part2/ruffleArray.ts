@@ -5,6 +5,7 @@ const arr: number[] = [1, 2, 3, 4, 5, 6, 7, 9, 11, 15, 29, 18]
 function ruffle(arr: number[]): void {
     let len = arr.length
     for (let i = 0; i < len; i++) {
+        // @ts-ignore
         const randomIndex = Math.round(Math.random() * (arr.length - 1 - i)) + i;
         let temp = arr[randomIndex];
         arr[randomIndex] = arr[i]
