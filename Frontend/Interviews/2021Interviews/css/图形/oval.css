@@ -1,4 +1,8 @@
 /*椭圆*/
 .oval {
-
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: darkseagreen;
+    margin: 200px auto;
 }

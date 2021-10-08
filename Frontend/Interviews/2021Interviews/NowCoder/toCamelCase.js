@@ -31,5 +31,3 @@ let res = cssStyle2DomStyle("font-size")
 console.log(res);
 
 let arr = [1, 2, 3, 4];
-
-arr.s
