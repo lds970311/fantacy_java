@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sector {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 330px solid transparent;
+    border-right: 330px solid transparent;
+    border-top: 630px solid red;
+    margin: 150px auto;
+    border-radius: 50%
+}

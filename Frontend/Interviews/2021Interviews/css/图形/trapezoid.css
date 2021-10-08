@@ -1,0 +1,12 @@
+/*梯形*/
+.sector {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    background: transparent;
+    border-top: 50px solid green;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    transform: rotate(180deg);
+}

@@ -1,5 +1,6 @@
 .center {
-    width: calc(100% - 400px);
+    margin: 0 100px;
+    width: 100%;
     background-color: cornflowerblue;
     height: 500px;
     position: absolute;
@@ -24,3 +25,4 @@
     top: 0;
     right: 0;
 }
+
