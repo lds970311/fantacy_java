@@ -15,7 +15,18 @@ let unique = (input) => {
 
     return res
 }
-let a = unique([1, "a", {b: 2}, {c: 3}, {b: 2}, "1", "a"])
+
+const unique2 = input => {
+    let res = []
+    input.forEach(item => {
+        if (JSON.stringify(res).indexOf(item) === -1) {
+            res.push(item)
+        }
+    })
+    return res
+}
+
+let a = unique2([1, "a", {b: 2}, {c: 3}, {b: 2}, "1", "a"])
 console.log(a);
 
 /*
