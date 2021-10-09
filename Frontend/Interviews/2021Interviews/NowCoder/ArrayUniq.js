@@ -2,11 +2,24 @@
  * 为 Array 对象添加一个去除重复项的方法
  */
 
-Array.prototype.uniq = function () {
-    return [...new Set(this)]
-}
+let unique = (input) => {
+    let res = []
+    res = input.reduce((item, pre) => {
+        console.log(item, pre)
+        if (JSON.stringify(item).indexOf(JSON.stringify(pre)) === -1) {
+            return [...item, pre]
+        } else {
+            return item
+        }
+    }, res)
 
+    return res
+}
+let a = unique([1, "a", {b: 2}, {c: 3}, {b: 2}, "1", "a"])
+console.log(a);
+
+/*
 let arr = [false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN]
 arr.uniq();
 
-console.log(arr)
+console.log(arr)*/
