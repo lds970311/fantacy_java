@@ -26,5 +26,6 @@ function compareVersion(verA: string, operator: string, verB: string): boolean {
 
 console.log(compareVersion('4.0.1.0', '=', '0.4.1.0'));  // false
 console.log(compareVersion('4.0.1.0', '>', '4'));    // true(0417修正)
-console.log(compareVersion('4.0.1.0', '<', '4.1.0'));   // true
+console.log(compareVersion('4.0.1.0', '<', '4.1.0'));
+// true
 
