@@ -17,20 +17,23 @@
         document.body.appendChild(div)
         return div
     }
-    
+
     const getSingle = function (cb) {
         let result;
-        return function () {
-            return result || (result = cb.apply(this, arguments))
+        return function (...args) {
+            return result || (result = cb.apply(this, args))
         }
     }
-    
+
     const create = getSingle(createLogin)
     document.getElementById("btn").onclick = () => {
         const element = create(1, 2, 3)
         element.style = {
             display: "block",
-            color: "red"
+            color: "red",
+            width: '200px',
+            height: '100px',
+            margin: '10px auto'
         }
     }
 </script>

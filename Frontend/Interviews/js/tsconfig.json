@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "sourceMap": true,
+    "strict": true
+  },
+  "includes": [
+    "PartOne"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

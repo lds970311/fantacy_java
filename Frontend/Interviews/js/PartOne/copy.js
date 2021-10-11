@@ -20,7 +20,7 @@ function shallowCopy(obj) {
 }
 
 function deepClone(obj) {
-    let target = {}
+    let target = Array.isArray(obj) ? [] : {}
     if (typeof obj !== 'object' || obj === null) {
         return obj
     }
@@ -30,11 +30,7 @@ function deepClone(obj) {
     if (obj instanceof RegExp) {
         return new RegExp(obj)
     }
-    /*    for (let i in obj) {
-            if (obj.hasOwnProperty(i)) {
-                target[i] = deepClone(obj[i])
-            }
-        }*/
+
     Object.keys(obj).forEach(item => {
         if (obj.hasOwnProperty(item)) {
             target[item] = deepClone(obj[item])
