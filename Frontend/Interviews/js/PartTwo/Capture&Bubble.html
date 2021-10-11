@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>事件捕获和冒泡</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" user-scalable="no">
+</head>
+<body>
+<button id="btn">click me</button>
+<script>
+    window.addEventListener('click', event => {
+        //阻止全局的点击事件
+        event.stopPropagation()
+        console.log("banned")
+    }, true)
+    const btn = document.getElementById("btn")
+    btn.onclick = function () {
+        console.log("123")
+    }
+</script>
+</body>
+</html>
