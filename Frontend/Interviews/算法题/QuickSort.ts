@@ -18,7 +18,9 @@ function quickSort(arr: Array<unknown>) {
     return quickSort(left).concat(baseNum, quickSort(right));
 }
 
+// @ts-ignore
 let a1: number[] = [4, 7, 5, 2, 3]
+// @ts-ignore
 let res1 = quickSort(a1)
 
 console.log(res1)
