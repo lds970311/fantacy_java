@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "evan",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^16.10.3"
+  }
+}
