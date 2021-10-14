@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "evan",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node modular/main.ts"
+  },
   "dependencies": {
     "@types/node": "^16.10.3"
   }
