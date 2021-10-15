@@ -15,13 +15,11 @@ program.version(pkg.version, '-v, --version')
 //帮助信息
 helpCommander()
 
-//创建工程命令
+//创建命令
 createCommand()
 
 //启动项目
 startProject()
-    .then(() => console.log("项目启动成功"))
-    .catch(err => console.log("项目启动失败", err));
 program.parse(process.argv)
 
 

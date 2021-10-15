@@ -13,10 +13,10 @@ const commandSpawn = function (): Promise<string | any> {
         childProcess.stderr.pipe(process.stderr)
         //npm i 执行完成后, 通知主线程
         childProcess.on('close', () => {
-            resolve("npm 安装结束!")
+            resolve("")
         })
         childProcess.on('error', () => {
-            reject("npm install error")
+            reject("error")
         })
     })
 
