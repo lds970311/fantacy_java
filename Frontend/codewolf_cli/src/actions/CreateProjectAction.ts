@@ -25,7 +25,7 @@ const createProjectAction = async function (project: string, others: string | st
         let res = await commandSpawn(command, ['install'], {cwd: `./${project}`})
         console.log(res)
         //3. 执行npm run serve
-        commandSpawn(command, ['run', 'serve'], {cwd: `./${project}`})
+        await commandSpawn(command, ['run', 'serve'], {cwd: `./${project}`})
         //4. 打开浏览器
         open("http://localhost:8080")
     } catch (e) {
