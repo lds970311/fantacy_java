@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
-const LikeButton: React.FC = () => {
+const LikeButton: React.FC = (): JSX.Element => {
     const [like, setLike] = useState(0)
     const [on, setOn] = useState(false)
     useEffect(() => {
