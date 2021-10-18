@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>drag API</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" user-scalable="no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #drag {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 50px;
+            background-color: blue;
+        }
+
+        #target {
+            width: 300px;
+            height: 300px;
+            border: 2px solid blue;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+<h3>随着鼠标拖动而移动的小猫咪</h3>
+<div id="drag"></div>
+<div id="target"></div>
+<script>
+    const element = document.getElementById("drag")
+    let offsetX;
+    let offsetY;
+    element.ondragstart = event => {
+        console.log("drag start")
+        offsetX = event.offsetX
+        offsetY = event.offsetY
+
+        element.ondrag = function (event) {
+            console.log("dragging")
+            let currentX = event.clientX
+            let currentY = event.clientY
+            currentX -= offsetX
+            currentY -= offsetY
+            this.style.left = currentX + 'px'
+            this.style.top = currentY + 'px'
+        }
+
+        element.ondragend = () => {
+            console.log("drag end")
+        }
+    }
+
+
+</script>
+</body>
+</html>
