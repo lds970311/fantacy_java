@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 
 const store = new Vuex.Store({
+    strict: true,
     modules: {
         countOptions: countOptions,
         personOptions: personOptions
