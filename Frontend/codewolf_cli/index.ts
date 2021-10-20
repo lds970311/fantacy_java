@@ -5,7 +5,7 @@ const program = require("commander")
 // @ts-ignore
 const helpCommander = require("./src/core/Help");
 // @ts-ignore
-const createCommand = require("./src/core/Create");
+const createCommand = require("./src/core/CreateVue");
 // @ts-ignore
 const startProject = require('./src/core/StartProject')
 
