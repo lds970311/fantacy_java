@@ -35,7 +35,7 @@ class PersonGenerator {
     }
 
     sleepFirst(seconds) {
-        this.taskQueue.splice(-1, 0, seconds);
+        this.taskQueue.unshift(seconds)
         return this;
     }
 
@@ -47,25 +47,27 @@ class PersonGenerator {
 
 const Person = name => new PersonGenerator(name);
 
-Person("Li");
+// Person("Li");
 // 输出： Hi! This is Li!
 
-Person("Dan").sleep(10).eat("dinner");
-// 输出：
-// Hi! This is Dan!
-// 等待10秒..
-// Wake up after 10
-// Eat dinner~
-
-Person("Jerry").eat("dinner").eat("supper");
-// 输出：
-// Hi This is Jerry!
-// Eat dinner~
-// Eat supper~
-
+// Person("Dan").sleep(10).eat("dinner");
+// // 输出：
+// // Hi! This is Dan!
+// // 等待10秒..
+// // Wake up after 10
+// // Eat dinner~
+//
+// Person("Jerry").eat("dinner").eat("supper");
+// // 输出：
+// // Hi This is Jerry!
+// // Eat dinner~
+// // Eat supper~
+//
 Person("Smith").sleepFirst(5).eat("supper");
-// 输出：
-// 等待5秒
-// Wake up after 5
-// Hi This is Smith!
-// Eat supper
+// // 输出：
+// // 等待5秒
+// // Wake up after 5
+// // Hi This is Smith!
+// // Eat supper
+
+
