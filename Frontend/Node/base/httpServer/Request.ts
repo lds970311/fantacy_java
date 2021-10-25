@@ -1,15 +1,15 @@
 import * as http from "http";
 import * as URL from "url";
-import {queryObj} from "../../@types/mytype";
+import {queryObj, SU} from "../../@types/mytype";
 import * as qs from "querystring"
 
 function request(): void {
     const server: http.Server = http.createServer((request, response) => {
-        const url = request.url
+        const url: SU = request.url
         // console.log(url)
-        const {pathname, query} = URL.parse(url)
+        const {pathname, query} = URL.parse(url!)
         // const queryObj = handleQueryString(query);
-        const queryObj = qs.parse(query)
+        const queryObj = qs.parse(query!)
         console.log(queryObj);
         /**
          * Url {
@@ -50,7 +50,7 @@ function request(): void {
 function handleQueryString(queryString: string): queryObj {
     const query = queryString.split("&");
     let len = query.length
-    const obj = {}
+    const obj: queryObj = {}
     for (let i = 0; i < len; i++) {
         let split = query[i].split("=");
         obj[split[0]] = split[1];
