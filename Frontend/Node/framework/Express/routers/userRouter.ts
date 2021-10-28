@@ -1,5 +1,5 @@
-import {Router} from "express";
 import * as core from "express-serve-static-core";
+import {Router} from "express";
 
 // @ts-ignore
 const router: core.Router = new Router({
