@@ -5,6 +5,9 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/FrameWorks/Angular/angular-first/dist" />
       <excludeFolder url="file://$MODULE_DIR$/FrameWorks/Angular/angular-first/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/FrameWorks/React/my-ts-react/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/Interviews/.idea/shelf" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
