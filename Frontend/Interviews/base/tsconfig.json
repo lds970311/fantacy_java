@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
