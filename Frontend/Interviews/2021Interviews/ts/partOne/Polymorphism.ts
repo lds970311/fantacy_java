@@ -3,7 +3,7 @@ interface IUsb {
 }
 
 class Disk implements IUsb {
-    private name: string
+    private readonly name: string
 
     constructor(name: string) {
         this.name = name
@@ -16,7 +16,7 @@ class Disk implements IUsb {
 
 
 class Phone implements IUsb {
-    private name: string
+    private readonly name: string
 
     constructor(name: string) {
         this.name = name

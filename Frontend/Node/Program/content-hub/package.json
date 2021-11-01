@@ -2,14 +2,15 @@
   "name": "content-hub",
   "version": "1.0.0",
   "description": "content share system",
-  "main": "main.ts",
+  "main": "src/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node main.ts"
+    "start": "ts-node src/main.ts"
   },
   "dependencies": {
     "@types/node": "^16.10.3",
     "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-multer": "^1.0.2",
