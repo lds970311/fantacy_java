@@ -1,4 +1,6 @@
-import Test from "./js_base/test";
+import First from "./js_base/first";
+import "../assets/style/common.less"
 
-const test = new Test("zhangsan", 19)
-console.log(test.age);
+
+const t = new First("zhangsan", 19)
+console.log(t.age);

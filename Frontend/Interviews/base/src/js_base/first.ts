@@ -1,4 +1,4 @@
-class Test {
+class First {
     private readonly _name: string
     private readonly _age: number
 
@@ -18,4 +18,4 @@ class Test {
     }
 }
 
-export default Test
+export default First
