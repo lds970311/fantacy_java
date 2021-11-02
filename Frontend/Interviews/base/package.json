@@ -23,9 +23,16 @@
     "webpack-dev-server": "^4.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "core-js": "^3.19.0",
     "css-loader": "^6.5.0",
     "html-webpack-plugin": "^5.5.0",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
     "style-loader": "^3.3.1",
-    "ts-loader": "^9.2.6"
+    "ts-loader": "^9.2.6",
+    "webpack-parallel-uglify-plugin": "^2.0.0"
   }
 }
