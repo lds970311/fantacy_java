@@ -1,6 +1,5 @@
-import First from "./js_base/first";
+//动态创建标签
+import "./plugins/menuCreator"
 import "../assets/style/common.less"
-
-
-const t = new First("zhangsan", 19)
-console.log(t.age);
+// import "./js_base/closure"
+import "./js_base/this"

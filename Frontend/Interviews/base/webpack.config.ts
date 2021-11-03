@@ -2,12 +2,20 @@ import * as path from "path";
 // @ts-ignore
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
+import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
 
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
 const config = {
     mode: "development",
-    entry: "./src/main.ts",
+    entry: {
+        index: "./src/main.ts",
+        about: "./src/about/about.ts",
+        js_Dom: "./src/js_Dom/js_Dom.ts",
+        js_Advance: "./src/js_Advance/js_Advance.ts",
+        myWebpack: "./src/myWebpack/myWebpack.ts",
+        performance: "./src/performance/performance.ts"
+    },
     devtool: 'inline-source-map',
     output: {
         filename: '[name].bundle.js',
@@ -67,8 +75,18 @@ const config = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
-            title: "this is title"
+            filename: "index.html",
+            title: "首页",
+            hot: true,
+            chunks: ["index"]
         }),
+        ...generateHTMLConfig([
+            "about",
+            "js_Advance",
+            "js_Dom",
+            "myWebpack",
+            "performance"
+        ]),
         new ParallelUglifyPlugin({
             uglifyJS: {
                 output: {
