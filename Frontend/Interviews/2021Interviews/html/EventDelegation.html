@@ -40,21 +40,6 @@
     </ul>
 </div>
 <script>
-    /*
-        const ul = document.getElementById("ul")
-        ul.addEventListener('click', event => {
-            let target = event.target;
-
-            while (target.parentNode.nodeName !== "BODY") {
-                if (target.nodeName === "LI") {
-                    console.log("li");
-                    break;
-                }
-                target = target.parentNode;
-            }
-
-        });
-    */
 
     function triggerEvent(event, target, fn, selector) {
         selector.addEventListener(event, e => {

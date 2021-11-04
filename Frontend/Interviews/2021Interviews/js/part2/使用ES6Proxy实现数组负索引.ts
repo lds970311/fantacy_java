@@ -15,6 +15,7 @@ function proxyArray(arr: any[]) {
     })
 }
 
+// @ts-ignore
 let a2 = proxyArray([1, 2, 3, 4, 5])
 
 console.log(a2[-2]);
