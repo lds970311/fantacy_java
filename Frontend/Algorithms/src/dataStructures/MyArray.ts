@@ -166,6 +166,52 @@ class MyArray<E> implements IArray<E> {
         return res;
     }
 
+    public map(cb: Function): MyArray<any> {
+        let res: MyArray<any> = new MyArray<any>()
+        for (let i = 0; i < this._length; i++) {
+            res.addLast(cb(this._data[i], i, this._data))
+        }
+        return res;
+    }
+
+    //翻转
+    public reverse(): void {
+        if (this.isEmpty() || this._length === 1) {
+            return
+        }
+        let len = this._length;
+        let mid = Math.floor(this._length / 2)
+        for (let i = 0; i < mid; i++) {
+            let temp = this._data[len - i - 1];
+            this.data[len - i - 1] = this.data[i];
+            this._data[i] = temp
+        }
+    }
+
+    public some(cb: (element: E, index: number, arr: Array<any>) => boolean): boolean {
+        if (this.isEmpty()) {
+            return false
+        }
+        for (let i = 0; i < this._length; i++) {
+            if (cb(this._data[i], i, this._data)) {
+                return true
+            }
+        }
+        return false;
+    }
+
+    public every(cb: (element: E, index: number, arr: Array<any>) => boolean): boolean {
+        if (this.isEmpty()) {
+            return false
+        }
+        for (let i = 0; i < this._length; i++) {
+            if (!cb(this._data[i], i, this._data)) {
+                return false
+            }
+        }
+        return true
+    }
+
     /**
      * 迭代器模式
      */

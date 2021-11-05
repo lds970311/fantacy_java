@@ -16,6 +16,18 @@ export interface IArray<E> {
     insert(index: number, ...elements: E[]): boolean
 }
 
+export interface IStack<E> {
+    push(element: E): void
+
+    pop(): E | undefined
+
+    peak(): E
+
+    isEmpty(): boolean
+
+    size(): number
+}
+
 export type ArrayLike<T> = {
     readonly length: number;
     readonly [n: number]: T;
