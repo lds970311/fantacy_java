@@ -24,5 +24,9 @@ routerGenerator([
     {
         name: "性能优化",
         url: "performance.html"
+    },
+    {
+        name: "ts装饰器",
+        url: "tsDecorator.html"
     }
 ])
