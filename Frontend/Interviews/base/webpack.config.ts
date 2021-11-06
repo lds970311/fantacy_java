@@ -14,7 +14,8 @@ const config = {
         js_Dom: "./src/js_Dom/js_Dom.ts",
         js_Advance: "./src/js_Advance/js_Advance.ts",
         myWebpack: "./src/myWebpack/myWebpack.ts",
-        performance: "./src/performance/performance.ts"
+        performance: "./src/performance/performance.ts",
+        tsDecorator: "./src/tsDecorator/tsDecorator.ts"
     },
     devtool: 'inline-source-map',
     output: {
@@ -86,7 +87,8 @@ const config = {
             "js_Advance",
             "js_Dom",
             "myWebpack",
-            "performance"
+            "performance",
+            "tsDecorator"
         ]),
         new ParallelUglifyPlugin({
             uglifyJS: {
