@@ -84,6 +84,7 @@ test("from", () => {
 
 
 test("遍历MyArray", () => {
+    // @ts-ignore
     for (let element of arr) {
         console.log(element)
     }
