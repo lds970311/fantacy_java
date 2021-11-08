@@ -19,16 +19,24 @@ function shallowCopy(obj) {
     return target
 }
 
-function deepClone(obj) {
-    let target = Array.isArray(obj) ? [] : {}
+function deepClone(obj, map = new WeakMap()) {
     if (typeof obj !== 'object' || obj === null) {
         return obj
     }
     if (obj instanceof Date) {
         return new Date(obj)
-    }
-    if (obj instanceof RegExp) {
+    } else if (obj instanceof RegExp) {
         return new RegExp(obj)
+    } else if (obj instanceof Function) {
+        return new Function('return ' + obj.toString()).call(this)
+    }
+
+
+    let target = Array.isArray(obj) ? [] : {}
+    if (map.get(obj)) {
+        return map.get(obj)
+    } else {
+        map.set(target, obj)
     }
 
     Object.keys(obj).forEach(item => {

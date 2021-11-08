@@ -31,19 +31,20 @@
 <button id="btn">获取数据</button>
 <script src="https://www.zhipin.com/wapi/zpCommon/data/position.json?callback=jsonp"></script>
 <script>
-    /*  $("#btn").on("click", function () {
-          $.ajax({
-              url: "https://www.zhipin.com/wapi/zpCommon/data/position.json",
-              type: "get",
-              dataType: "jsonp",
-              success: function (res) {
-                  console.log(res)
-              },
-              error: function (err) {
-                  console.log(err)
-              }
-          })
-      })*/
+    $("#btn").on("click", function () {
+        $.ajax({
+            url: "https://www.zhipin.com/wapi/zpCommon/data/position.json",
+            type: "get",
+            dataType: "jsonp",
+            success: function (res) {
+                console.log(res)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    })
+
     function jsonp(data) {
         console.log(data);
     }

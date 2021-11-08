@@ -28,7 +28,10 @@ const visitor = {
                 functions.push(constructorFunction)
             } else {
                 //普通方法
-                let memberExpression = types.memberExpression(types.memberExpression(id, types.identifier('prototype'), false), method.key, false);
+                let memberExpression = types.memberExpression(
+                    types.memberExpression(id, types.identifier('prototype'), false),
+                    method.key,
+                    false);
                 let functionExpression = types.functionExpression(null, method.params, method.body, false, false);
                 let assignmentExpression = types.assignmentExpression('=', memberExpression, functionExpression);
                 functions.push(types.expressionStatement(assignmentExpression));

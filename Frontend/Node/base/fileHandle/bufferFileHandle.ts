@@ -1,5 +1,8 @@
+// @ts-ignore
 import path from "path";
+// @ts-ignore
 import sharp from "sharp";
+// @ts-ignore
 import fs from "fs";
 import ErrnoException = NodeJS.ErrnoException;
 

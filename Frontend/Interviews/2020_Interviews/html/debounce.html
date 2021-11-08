@@ -18,6 +18,7 @@
             clearTimeout(timer);
             timer = setTimeout(() => {
                 cb(val)
+                timer = null;
             }, time)
         }
     }
