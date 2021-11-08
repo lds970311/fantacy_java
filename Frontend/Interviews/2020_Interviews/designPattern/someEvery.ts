@@ -8,6 +8,7 @@ const fruits = [
 
 //检测所有水果是否都是yellow
 
+// @ts-ignore
 let result = fruits.every(item => {
     return item.color === "yellow";
 })

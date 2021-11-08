@@ -76,9 +76,9 @@ form.addEventListener("submit", (event) => {
     validator.addRules("isPassword", formData.get("password"), "密码格式不正确")
     validator.addRules("isTel", formData.get("tel"), "手机号格式不正确")
 
-    validator.validate().then((res) => {
+    validator.validate().then((res: any) => {
         console.log(res)
-    }).catch(error => {
+    }).catch((error: any) => {
         console.log(error)
     })
 

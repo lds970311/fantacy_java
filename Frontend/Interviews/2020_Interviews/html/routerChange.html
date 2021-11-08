@@ -9,24 +9,24 @@
             margin: 0;
             padding: 0;
         }
-        
+
         ul {
             overflow: hidden;
             text-align: center;
             width: 300px;
             margin: 50px auto;
         }
-        
+
         ul li {
             list-style: none;
             float: left;
             width: 100px;
         }
-        
+
         a {
             text-decoration: none;
         }
-        
+
         .content {
             width: 400px;
             height: 300px;
@@ -51,7 +51,7 @@
         </li>
     </ul>
     <div class="content">
-    
+
     </div>
 </div>
 <script>
@@ -59,25 +59,31 @@
         constructor() {
             this.routers = {}; //保存路由
             this.currentUrl = ""; //保存当前hash
+            //初始化路由
+            this.init()
         }
-        
+
         init() {
-            window.addEventListener('hashchange', this.reloadPage.bind(this))
+            window.addEventListener('hashchange', () => {
+                this.reloadPage()
+            })
+            window.onload = function () {
+                document.getElementsByClassName("content")[0].innerHTML = " html"
+            }
         }
-        
+
         reloadPage() {
             this.currentUrl = window.location.hash.substring(1) || '/';
             this.routers[this.currentUrl]()
         }
-        
+
         map(key, cb) {
             this.routers[key] = cb;
         }
     }
-    
+
     window.myRouter = Router;
     const router = new myRouter();
-    router.init();
     const content = document.getElementsByClassName("content")[0]
     router.map("/html", () => {
         content.innerHTML = " html"
@@ -85,7 +91,7 @@
     router.map("/css", () => {
         content.innerHTML = " css"
     })
-    
+
     router.map("/javascript", () => {
         content.innerHTML = " javascript"
     })

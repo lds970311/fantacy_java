@@ -2,7 +2,7 @@
 
 declare interface IPubsub<T> {
     list: Array<T>,
-    addListener: (key: T, fn: Function) => void,
+    addListener: (key: T, fn: (msg: T) => void) => void,
     publish: () => void
     removeListener: (key: T, fn: Function | null) => void | false
 }
@@ -45,12 +45,12 @@ const shopObj: IPubsub<any> = {
 }
 
 //订阅者1
-shopObj.addListener("xm", (size: any) => {
+shopObj.addListener("xm", size => {
     console.log(`xm size is ${size}`)
 })
 
 //订阅者2
-shopObj.addListener("张三", (size: any) => {
+shopObj.addListener("张三", size => {
     console.log(`zhangsan size is ${size}`)
 })
 

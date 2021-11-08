@@ -34,6 +34,7 @@ class CarProxy {
 }
 
 const driver = new Driver(19);
+
 // @ts-ignore
 const result = new CarProxy(driver).drive();
 
@@ -41,17 +42,13 @@ console.log(result);
 
 
 //示例2: es6-proxy,在目标对象之间架设一层拦截
-// @ts-ignore
 const obj = {}
 
-// @ts-ignore
 const proxy = new Proxy(obj, {
     get(target: {}, p: string | symbol, receiver: any): any {
-        // @ts-ignore
         return Reflect.get(target, p, receiver)
     },
     set(target: {}, p: string | symbol, value: any, receiver: any): boolean {
-        // @ts-ignore
         return Reflect.set(target, p, value, receiver)
     }
 })

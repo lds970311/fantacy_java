@@ -1,5 +1,5 @@
 // this面试题
-/*(function () {
+(function () {
     var name = 222;
     var a = {
         name: 111,
@@ -7,10 +7,10 @@
             console.log(this.name)
         }
     }
-
+    console.log(this) //window; global
     var fun = a.say
-    fun()
-    a.say()
+    fun() //undefined
+    a.say() //111
 
     var b = {
         name: 333,
@@ -18,14 +18,13 @@
             fun()
         }
     }
-    b.say(a.say)
+    b.say(a.say) //undefined
     b.say = a.say
-    b.say()
-})()*/
+    b.say() //333
+})()
 
 
 //剪头函数的this
-/*
 var x = 11
 var obj = {
     x: 22,
@@ -33,9 +32,9 @@ var obj = {
         console.log(this.x)
     }
 }
-obj.say()*/
+obj.say()
 
-var obj = {
+var obj1 = {
     birthday: 1990,
     getAge: function () {
         var b = this.birthday;
@@ -46,4 +45,4 @@ var obj = {
     }
 }
 
-console.log(obj.getAge());
+console.log(obj1.getAge());
