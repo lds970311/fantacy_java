@@ -7,15 +7,24 @@ Function.prototype.myBind = function (context, ...args) {
     if (typeof this !== "function") {
         throw new TypeError("Error");
     }
-    return function () {
-        return that.apply(context, args.concat(...arguments));
-    }
+    context = context || window || global;
+    context.fn = this;
+    const result = context.fn(...args)
+    delete context.fn
+    return result;
 }
 
-let Person = {}
+function Person() {
+    this.name = "man";
+}
+
+let a = {
+    name: "a"
+}
 
 let speak = function (a, b) {
     console.log("i can speak" + a + b)
+    console.log(`${this.name} is speaking`)
 }
 
 let Man = {
@@ -23,5 +32,5 @@ let Man = {
 }
 
 
-speak = speak.myBind(Person, 1, 23)
-speak();
+speak.myBind(Person, 1, 2)
+speak.myBind(a, 1, 2, 3)

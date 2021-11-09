@@ -1,0 +1,25 @@
+/*flex布局实现两侧定宽中间自适应*/
+
+.outer {
+    display: flex;
+    height: 100px;
+}
+
+.left {
+    height: 100%;
+    background: tomato;
+    flex: 0 0 200px; /*不扩张 不收缩*/
+}
+
+.right {
+    height: 100%;
+    background: gold;
+    flex: 0 0 200px; /*不扩张 不收缩*/
+}
+
+.center {
+    flex: 1 1 auto; /*-可放大 可缩小,自适应宽度*/
+    height: 100%;
+    background: lightgreen;
+}
+

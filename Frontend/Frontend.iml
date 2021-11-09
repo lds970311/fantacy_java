@@ -9,6 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Interviews/.idea/shelf" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/Algorithms/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/Algorithms/coverage" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

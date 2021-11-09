@@ -7,12 +7,18 @@
 </head>
 <body>
 <script>
-    for (let i = 0; i < 2; i++) {
+    /*for (let i = 0; i < 2; i++) {
         (function (time) {
             setTimeout(() => {
                 console.log(i + 1)
             }, 1000 * i)
         })(i)
+    }*/
+
+    for (let i = 1; i < 3; i++) {
+        setTimeout(() => {
+            console.log(i)
+        }, i * 1000)
     }
 </script>
 </body>

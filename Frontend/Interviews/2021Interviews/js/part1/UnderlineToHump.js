@@ -4,12 +4,12 @@
 function UnderlineToHump(param) {
     let result = ""
     const strs = param.split("_");
-    for (let strsKey in strs) {
+    for (let strKey in strs) {
         if (result.length === 0) {
-            result += strs[strsKey].toLowerCase()
+            result += strs[strKey].toLowerCase()
         } else {
-            result += strs[strsKey].substring(0, 1).toUpperCase()
-            result += strs[strsKey].substring(1).toLowerCase()
+            result += strs[strKey].substring(0, 1).toUpperCase()
+            result += strs[strKey].substring(1).toLowerCase()
         }
     }
     return result;
