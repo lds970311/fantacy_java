@@ -19,8 +19,7 @@ function nextTick(callback) {
     callbackQueue.push(callback)
     if (!pending) {
         pending = true;
-        // @ts-ignore
-        Promise.resolve().then(flushCallback)
+        setTimeout(flushCallback, 0)
     }
 }
 

@@ -7,7 +7,7 @@
             console.log(this.name)
         }
     }
-    console.log(this) //window; global
+    // console.log(this) //window; global
     var fun = a.say
     fun() //undefined
     a.say() //111
@@ -29,6 +29,7 @@ var x = 11
 var obj = {
     x: 22,
     say: () => {
+        console.log(this)
         console.log(this.x)
     }
 }

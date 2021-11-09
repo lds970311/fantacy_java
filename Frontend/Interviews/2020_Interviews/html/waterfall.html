@@ -9,18 +9,19 @@
             padding: 0;
             position: relative;
         }
-        
+
         img {
             width: 220px;
             display: block;
         }
-        
+
         .item {
             box-shadow: 2px 2px 2px #999;
             position: absolute;
         }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script defer src="../js/PartOne/Throttling.js"></script>
 </head>
 <body>
 <!-- html 部分 -->
@@ -50,20 +51,20 @@
         "https://s5.mogucdn.com/mlcdn/c45406/200501_1iacl56kkel7e98flhg8h510gkdhb_640x961.jpg_500x9999.v1c7E.81.webp",
         "https://s5.mogucdn.com/mlcdn/c45406/210710_07bbcac5443i981l5alh45ilab6a4_640x960.jpg_500x9999.v1c7E.81.webp"
     ]
-    
+
     //创建图片元素
     for (let i = 0; i < imgList.length; i++) {
         let img = $(` <div class="item"><img src=${imgList[i]} alt=""></div>`)
         $("#box").append(img)
     }
-    
+
     // 定义每一列之间的间隙 为10像素
     const gap = 10;
-    
+
     window.onload = function () {
-        
+
         waterfall()
-        
+
         function waterfall() {
             const items = $("#box").children()
             const pageWidth = getClient().width;
@@ -97,15 +98,20 @@
                     })
                     // 5- 修改最小列的高度
                     // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
-                    arr[minIndex] = arr[minIndex] + items[index].offsetHeight + gap;
+                    arr[minIndex] = arr[minIndex] + element.offsetHeight + gap;
                 }
             })
         }
-        
-        window.onresize = () => {
+
+        /* window.onresize = () => {
+             waterfall()
+         }*/
+
+        //引入节流
+        window.onresize = throttling(() => {
             waterfall()
-        }
-        
+        }, 1000)
+
         //当加载到最后一张的时候,加载更多图片
         window.onscroll = () => {
             const items = $("#box").children()
@@ -140,8 +146,8 @@
             }
         }
     }
-    
-    
+
+
     //兼容性处理
     function getClient() {
         return {
@@ -149,7 +155,7 @@
             height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
         }
     }
-    
+
     function getScrollTop() {
         return window.pageYOffset || document.documentElement.scrollTop;
     }

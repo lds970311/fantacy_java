@@ -19,6 +19,9 @@ function objectFactory() {
     return flag ? result : newObj
 }
 
-objectFactory(function () {
-
+const obj = objectFactory(function () {
+    this.name = "xm"``
+    this.age = 19
 })
+
+console.log(obj)

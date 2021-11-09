@@ -1,20 +1,27 @@
 .outer {
-    display: flex;
+    /*display: flex;*/
     height: 100px;
 }
 
 .left {
     width: 100px;
     background: tomato;
+    float: left;
+    height: 100%;
 }
 
 .right {
     width: 100px;
     background: gold;
+    float: right;
+    height: 100%;
 }
 
 .center {
-    flex: 1;
+    margin: auto;
+    width: calc(100% - 200px);
+    height: 100%;
+    float: left;
     background: lightgreen;
 }
 

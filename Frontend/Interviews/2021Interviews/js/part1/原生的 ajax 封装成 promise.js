@@ -14,3 +14,7 @@ const myAjax = function (url, data) {
         }
     })
 }
+
+myAjax("https://mock.mengxuegu.com/mock/6188d0e54c5d9932f7e7576b/mock_test/info").then(res => {
+    console.log(res);
+})
