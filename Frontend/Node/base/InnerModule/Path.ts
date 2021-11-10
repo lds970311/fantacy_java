@@ -1,5 +1,4 @@
-// @ts-ignore
-const path = require('path')
+import * as path from 'path';
 
 function testA(): void {
     //获取路径信息

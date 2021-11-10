@@ -7,8 +7,8 @@ const compiler1 = require("../utils/Compiler");
 const addVuePageAction = async (name: string, destination: string | undefined): Promise<void> => {
     const targetPath = path2.resolve(destination, `${name.toLowerCase()}/${name}.vue`)
     const routerPath = path2.resolve(destination, `${name.toLowerCase()}/router.js`)
-    let pageResult;
-    let routerResult;
+    let pageResult: any;
+    let routerResult: any;
     try {
         pageResult = await compiler1("component.vue.ejs", {name, lowerName: name.toLowerCase()})
         routerResult = await compiler1("router.vue.ejs", {name, lowerName: name.toLowerCase()})

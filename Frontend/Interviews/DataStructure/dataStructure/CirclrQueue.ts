@@ -3,7 +3,7 @@
  */
 
 class CircleQueue<T> {
-    private queue: Array<T>
+    private queue: Array<T | null>
     private first: number
     private last: number
     private size: number
@@ -29,7 +29,7 @@ class CircleQueue<T> {
         this.last = (this.last + 1) % this.queue.length
     }
 
-    public deQueue(): T {
+    public deQueue(): T | null {
         if (this.isEmpty()) {
             throw new Error("queue is empty!");
         }
@@ -44,7 +44,7 @@ class CircleQueue<T> {
         return ele;
     }
 
-    public getHeader(): T {
+    public getHeader(): T | null {
         if (!this.isEmpty()) {
             return this.queue[this.first]
         } else {

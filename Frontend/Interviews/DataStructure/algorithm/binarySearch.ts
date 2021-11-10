@@ -24,5 +24,6 @@ function binarySearch(left: number, right: number, target: number, array: number
     return -1
 }
 
+// @ts-ignore
 const number = binarySearch(0, b.length - 1, 123, b);
 console.log(number);

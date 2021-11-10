@@ -16,5 +16,6 @@ function strStr(haystack: string, needle: string): number {
 let haystack = ""
 let needle = ""
 
+// @ts-ignore
 const number = strStr(haystack, needle);
 console.log(number);
