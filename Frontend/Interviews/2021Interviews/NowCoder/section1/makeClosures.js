@@ -22,3 +22,23 @@ function makeClosures(arr, fn) {
     })
     return result;
 }
+
+//方式2
+function mekeClosures2(arr, func) {
+    const res = [];
+    arr.forEach(item => {
+        res.push(() => {
+            return func(item)
+        })
+    })
+    return res;
+}
+
+
+const closures = makeClosures([1, 2, 3], x => x * x);
+console.log(closures[1]());
+
+const closures2 = mekeClosures2([4, 5, 6], x => x * x);
+console.log(closures2[0]())
+console.log(closures2[1]())
+console.log(closures2[2]())

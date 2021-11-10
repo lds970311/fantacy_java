@@ -11,4 +11,4 @@ const writeFile = (path: string, contents: string): Promise<void> => {
     return fs.promises.writeFile(path, contents)
 }
 
-module.exports = writeFile
+export default writeFile

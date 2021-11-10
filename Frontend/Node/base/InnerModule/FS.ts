@@ -1,9 +1,9 @@
 /**
  * Node文件操作
  */
-const fs = require("fs")
-// @ts-ignore
-const path = require("path")
+import * as fs from 'fs';
+
+import * as path from "path"
 
 const filePath = "./Path.ts"
 
@@ -52,7 +52,7 @@ function fsA(): void {
 
 
 function fileDescriptor(): void {
-    fs.open(filePath, (err, fd) => {
+    fs.open(filePath, 'r', (err, fd) => {
         if (err) {
             console.log(err);
             return
@@ -121,12 +121,12 @@ function readdir() {
             return
         }
         console.log(files)
-        fs.writeFile('./write.txt', files.toString(), (err, data) => {
+        fs.writeFile('./write.txt', files.toString(), (err: NodeJS.ErrnoException | null): void => {
             if (err) {
                 console.error(err)
                 return
             }
-            console.log(data)
+            console.log("write file success")
         })
     })
 }

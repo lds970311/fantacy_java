@@ -1,8 +1,7 @@
 // @ts-ignore
 const program = require('commander')
 const createProgram = require('../actions/CreateProjectAction')
-// @ts-ignore
-const {addVueComponentAction} = require('../actions/AddComponentAction');
+import addVueComponentAction from '../actions/AddComponentAction'
 // @ts-ignore
 const {addVuePageAction} = require("../actions/AddPageAction");
 //@ts-ignore
@@ -15,7 +14,7 @@ const createCommand = async function (): void {
     program
         .command('create <project> [...others]')
         .description('clone repository into a folder')
-        .action((project, others) => {
+        .action((project: any, others: any) => {
             // console.log(project, others)
             createProgram(project, others)
         })

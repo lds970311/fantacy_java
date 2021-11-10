@@ -15,7 +15,7 @@ function addDigits(num: number): number {
 }
 
 
-function getSum(num) {
+function getSum(num: number) {
     let s = num + ""
     let result = 0;
     for (let i = 0; i < s.length; i++) {

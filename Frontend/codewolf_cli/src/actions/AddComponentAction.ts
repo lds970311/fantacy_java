@@ -1,6 +1,5 @@
-const compiler = require("../utils/Compiler");
-// @ts-ignore
-const writeFile = require("../utils/WriteFile");
+import compiler from "../utils/Compiler"
+import writeFile from "../utils/WriteFile";
 // @ts-ignore
 const path1 = require("path")
 
@@ -42,9 +41,7 @@ const addVueComponentAction = function (name: string, destination: string | unde
                 }
             }
         })
-        .catch(err => console.error(err));
+        .catch((err: any) => console.error(err));
 }
 
-module.exports = {
-    addVueComponentAction
-}
+export default addVueComponentAction

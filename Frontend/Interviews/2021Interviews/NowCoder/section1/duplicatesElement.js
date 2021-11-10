@@ -22,5 +22,5 @@ function duplicates(arr) {
     return dArr;
 }
 
-duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
-
+const res = duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
+console.log(res);

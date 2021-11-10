@@ -1,7 +1,5 @@
-// @ts-ignore
-const program = require("commander")
+import {program} from "commander";
 
-// @ts-ignore
 const helpCommander = () => {
     //增加option
     program.option('-v --version', 'get codewolf cli version')

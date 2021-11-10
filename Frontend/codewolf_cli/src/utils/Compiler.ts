@@ -9,7 +9,7 @@ const compile = (templateName: string, data: string | object): Promise<string> =
     const templatePath = path.resolve(__dirname, templatePosition)
     // console.log(templatePath)
     return new Promise((resolve, reject) => {
-        ejs.renderFile(templatePath, {data}, {}, (err, result) => {
+        ejs.renderFile(templatePath, {data}, {}, (err: any, result: string | PromiseLike<string>) => {
             if (err) {
                 reject(err)
                 return
@@ -19,6 +19,6 @@ const compile = (templateName: string, data: string | object): Promise<string> =
     })
 }
 
-module.exports = compile
+export default compile
 
 
