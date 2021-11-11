@@ -16,6 +16,7 @@ const useURLLoader = (url: string, deps: any[] = []) => {
     }
 
     // @ts-ignore
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         setLoading(true)
         await getCityData()
