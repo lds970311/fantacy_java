@@ -1,0 +1,16 @@
+.navigator {
+  width: 100%;
+  background-color: #ec8181;
+
+  ul {
+    max-width: 1196px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: burlywood;
+    list-style: none;
+  }
+}
