@@ -15,7 +15,9 @@
     function debounce(time) {
         let timer;
         return function (val, cb) {
-            clearTimeout(timer);
+            if (timer) {
+                clearTimeout(timer);
+            }
             timer = setTimeout(() => {
                 cb(val)
                 timer = null;
