@@ -13,5 +13,9 @@
     font-weight: bold;
     color: burlywood;
     list-style: none;
+
+    & > li {
+      cursor: pointer;
+    }
   }
 }
