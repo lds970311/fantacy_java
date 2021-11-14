@@ -1,9 +1,11 @@
 //CREATE AT: 2021-11-12
-import {createRouter, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import TemplateUse from "../components/TemplateUse.vue";
+import VuexTest from "../components/VuexTest.vue";
+import VModel from "../pages/VModel.vue"
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: "/",
@@ -12,6 +14,14 @@ const router = createRouter({
         {
             path: "/templateUse",
             component: TemplateUse,
+        },
+        {
+            path: "/vuexTest",
+            component: VuexTest
+        },
+        {
+            path: "/vmodel",
+            component: VModel
         }
     ]
 })
