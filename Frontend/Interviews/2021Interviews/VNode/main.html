@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>虚拟Dom</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" user-scalable="no">
+</head>
+<body>
+<div id="container"></div>
+<button id="btn-change">change</button>
+
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js"></script>
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js"></script>
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js"></script>
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js"></script>
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js"></script>
+<script src="https://cdn.bootcss.com/snabbdom/0.7.3/h.js"></script>
+<script src="./demo1.js"></script>
+<script>
+    fetch("mockData.php").then(res => {
+        return res.json()
+    }).then(res => {
+        console.log(res.data.projects)
+    })
+</script>
+</body>
+</html>
