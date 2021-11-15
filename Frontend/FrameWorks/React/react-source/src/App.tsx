@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Navigator from "./components/Navigator/Navigator";
 import Index from "./pages/Index/Index";
@@ -20,10 +20,10 @@ const App = () => {
                     }
                 ]}>123</Navigator>
                 <Root/>
-                <Switch>
-                    <Route path="/" component={Index} exact/>
-                    <Route path="/home" component={Home} exact/>
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Index/>}/>
+                    <Route path="/home" element={<Home/>}/>
+                </Routes>
 
             </BrowserRouter>
         </div>
