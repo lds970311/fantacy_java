@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from "./navigator.module.scss"
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import img1 from "../../../assets/01.jpeg"
 
 interface INavigationItem {
@@ -14,7 +14,7 @@ interface INavigationOptions {
 }
 
 const Navigator: React.FunctionComponent<INavigationOptions> = (props: INavigationOptions): JSX.Element => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const {options} = props;
     return (
         <div className={Style.navigator}>
@@ -23,7 +23,7 @@ const Navigator: React.FunctionComponent<INavigationOptions> = (props: INavigati
                 {
                     options.map(item => {
                         return (
-                            <li onClick={() => history.push(item.path)} key={item.name}>{item.name}</li>
+                            <li onClick={() => navigate(item.path, {replace: false})} key={item.name}>{item.name}</li>
                         )
                     })
                 }
