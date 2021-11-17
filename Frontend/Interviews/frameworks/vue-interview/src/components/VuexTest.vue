@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
 import {useStore} from "vuex";
 
 
