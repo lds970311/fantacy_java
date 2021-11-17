@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
 import {msgTest} from "../test/msgTest";
 
 export default {
