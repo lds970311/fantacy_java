@@ -1,12 +1,14 @@
 <template>
   <div>
-    {{ msg }}
-    <model-custom :msg="msg"></model-custom>
+    <!--    {{ $store.state.count }}-->
+    {{ count }}
+    {{ name }}
   </div>
 </template>
 
 <script lang="js">
 import ModelCustom from "../components/ModelCustom.vue";
+import {mapState} from "vuex";
 
 export default {
   name: "VModel",
@@ -15,8 +17,14 @@ export default {
   },
   data() {
     return {
-      msg: "Hello"
+      nameLength: 0
     }
+  },
+  mounted() {
+    console.log(this.$store.state.mainOptions.count)
+  },
+  computed: {
+    ...mapState("mainOptions", ["name", "count"])
   }
 }
 </script>

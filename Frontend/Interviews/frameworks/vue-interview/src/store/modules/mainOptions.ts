@@ -2,13 +2,15 @@
 import {ActionContext, Module} from "vuex";
 
 interface IMain {
-    count: number
+    count: number,
+    name: string
 }
 
 const mainOptions: Module<IMain, any> = {
     namespaced: true,
     state: {
-        count: 1
+        count: 1,
+        name: "baby"
     },
     actions: {
         increment(context: ActionContext<IMain, any>) {
