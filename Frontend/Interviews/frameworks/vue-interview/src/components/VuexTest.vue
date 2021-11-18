@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {useStore} from "vuex";
+import {mapGetters, useStore} from "vuex";
 
 
 export default {
@@ -15,7 +15,7 @@ export default {
   props: [],
   setup() {
     const store = useStore()
-    console.log()
+    console.log(store)
     const add = () => {
       store.commit("mainOptions/increment")
     }
