@@ -1,15 +1,21 @@
 import './App.scss'
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Home from "./pages/Home/Home";
+import {lazy, Suspense} from "react";
+import Advanced from "./pages/Advanced/Advanced";
+
+const Home = lazy(() => import ("./pages/Home/Home"));
 
 function App() {
 
     return (
         <div className="App">
             <BrowserRouter>
-                <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                </Routes>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        <Route path={"/"} element={<Home/>}/>
+                        <Route path={"/advance"} element={<Advanced/>}/>
+                    </Routes>
+                </Suspense>
             </BrowserRouter>
         </div>
     )
