@@ -3,11 +3,15 @@ import * as path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
 const config = {
-    mode: "development",
+    mode: "production",
     entry: {
         index: "./src/main.ts",
         about: "./src/about/about.ts",
@@ -26,23 +30,14 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    //开启tree-shaking
-    optimization: {
-        usedExports: true, // 识别无用代码
-        minimize: true,    // 将无用代码在打包中删除
-        concatenateModules: true, // 尽可能将所有模块合并输出到一个函数中
-    },
-    devServer: {
-        compress: true,
-        allowedHosts: 'all',
-        open: true,
-        port: 13288
-    },
+
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                //抽离css
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+
             },
             {
                 test: /\.tsx?$/,
@@ -60,7 +55,7 @@ const config = {
             },
             {
                 test: /\.less$/i,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
             },
             {
                 test: /\.jsx?$/i,
@@ -86,6 +81,10 @@ const config = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        //抽离css文件
+        new MiniCssExtractPlugin({
+            filename: "css/[name].css"
+        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
             filename: "index.html",
@@ -146,7 +145,17 @@ const config = {
             workerCount: 6,
             sourceMap: false
         })
-    ]
+    ],
+    //开启tree-shaking
+    optimization: {
+        usedExports: true, // 识别无用代码
+        minimize: true,    // 将无用代码在打包中删除
+        concatenateModules: true, // 尽可能将所有模块合并输出到一个函数中
+        //压缩css
+        minimizer: [
+            [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
+        ]
+    },
 }
 
 export default config
