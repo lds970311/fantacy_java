@@ -1,7 +1,7 @@
 //CREATE AT: 2021-11-19
 import React from 'react';
 
-const WithMouse = (Component: any) => {
+const WithMouse = (Component: typeof React.Component) => {
     class WithMouse extends React.Component {
         constructor(props: any) {
             super(props);
