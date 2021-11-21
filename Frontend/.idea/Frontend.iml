@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="three" level="application" />
+    <orderEntry type="library" name="runtime" level="application" />
+    <orderEntry type="library" name="sea" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="vue.common.dev" level="application" />
+    <orderEntry type="library" name="lodash.core" level="application" />
+    <orderEntry type="library" name="sea" level="application" />
+    <orderEntry type="library" name="three" level="application" />
+    <orderEntry type="library" name="snabbdom" level="application" />
+    <orderEntry type="library" name="snabbdom-class" level="application" />
+    <orderEntry type="library" name="snabbdom-props" level="application" />
+    <orderEntry type="library" name="snabbdom-style" level="application" />
+    <orderEntry type="library" name="snabbdom-eventlisteners" level="application" />
+    <orderEntry type="library" name="h" level="application" />
+  </component>
+</module>

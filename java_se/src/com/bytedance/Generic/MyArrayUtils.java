@@ -77,16 +77,16 @@ public class MyArrayUtils {
 
     //可以将任意对象数组的元素拼接为一个字符串返回
     public static <T> String toString(T[] arr) {
-        String str = "[";
+        StringBuilder str = new StringBuilder("[");
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
-                str += arr[i];
+                str.append(arr[i]);
             } else {
-                str += "," + arr[i];
+                str.append(",").append(arr[i]);
             }
         }
-        str += "]";
-        return str;
+        str.append("]");
+        return str.toString();
     }
 
 }
