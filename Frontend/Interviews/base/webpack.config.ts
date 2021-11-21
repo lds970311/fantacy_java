@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin"
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
 
+const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
 const config = {
@@ -26,17 +27,11 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    //开启tree-shaking
-    optimization: {
-        usedExports: true, // 识别无用代码
-        minimize: true,    // 将无用代码在打包中删除
-        concatenateModules: true, // 尽可能将所有模块合并输出到一个函数中
-    },
     devServer: {
         compress: true,
         allowedHosts: 'all',
         open: true,
-        port: 13288
+        port: 13288,
     },
     module: {
         rules: [
@@ -86,6 +81,7 @@ const config = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
             filename: "index.html",

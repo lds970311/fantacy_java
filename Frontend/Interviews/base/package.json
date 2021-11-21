@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.ts",
     "serve": "webpack-dev-server --hot",
-    "ts-build": "tsc"
+    "ts-build": "tsc",
+    "dll": "webpack --config build/webpack.dll.js"
   },
   "keywords": [
     "interview",
@@ -17,6 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "clean-webpack-plugin": "^4.0.0",
+    "happypack": "^5.0.1",
+    "moment": "^2.29.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4",
     "webpack": "^5.61.0",

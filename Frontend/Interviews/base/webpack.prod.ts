@@ -4,6 +4,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin"
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as webpack from "webpack";
+import HappyPack from "happypack";
 
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
@@ -81,6 +83,19 @@ export default {
         //抽离css文件
         new MiniCssExtractPlugin({
             filename: "css/[name].css"
+        }),
+        // happyPack 开启多进程打包
+        new HappyPack({
+            // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
+            id: 'babel',
+            // 如何处理 .js 文件，用法和 Loader 配置中一样
+            loaders: ['babel-loader?cacheDirectory'],
+            threads: 4
+        }),
+        //忽略mement下locale目录
+        new webpack.IgnorePlugin({
+            contextRegExp: /^\.\/locale$/,
+            resourceRegExp: /moment$/
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
