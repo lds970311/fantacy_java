@@ -5,12 +5,9 @@ import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const TerserPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
-const config = {
+export default {
     mode: "production",
     entry: {
         index: "./src/main.ts",
@@ -61,7 +58,7 @@ const config = {
                 test: /\.jsx?$/i,
                 use: [
                     {
-                        loader: "babel-loader",
+                        loader: "babel-loader?cacheDirectory",
                     }
                 ],
                 exclude: /node_modules/
@@ -100,51 +97,6 @@ const config = {
             "performance",
             "tsDecorator"
         ]),
-        new ParallelUglifyPlugin({
-            uglifyJS: {
-                output: {
-                    /*
-                     是否输出可读性较强的代码，即会保留空格和制表符，默认为输出，为了达到更好的压缩效果，
-                     可以设置为false
-                    */
-                    beautify: false,
-                    /*
-                     是否保留代码中的注释，默认为保留，为了达到更好的压缩效果，可以设置为false
-                    */
-                    comments: false
-                },
-                compress: {
-                    /*
-                     是否在UglifyJS删除没有用到的代码时输出警告信息，默认为输出，可以设置为false关闭这些作用
-                     不大的警告
-                    */
-                    warnings: false,
-
-                    /*
-                     是否删除代码中所有的console语句，默认为不删除，开启后，会删除所有的console语句
-                    */
-                    drop_console: true,
-
-                    /*
-                     是否内嵌虽然已经定义了，但是只用到一次的变量，比如将 var x = 1; y = x, 转换成 y = 5, 默认为不
-                     转换，为了达到更好的压缩效果，可以设置为false
-                    */
-                    collapse_vars: true,
-
-                    /*
-                     是否提取出现了多次但是没有定义成变量去引用的静态值，比如将 x = 'xxx'; y = 'xxx'  转换成
-                     var a = 'xxxx'; x = a; y = a; 默认为不转换，为了达到更好的压缩效果，可以设置为false
-                    */
-                    reduce_vars: true
-                },
-            },
-            test: /.ts$/g,
-            include: [],
-            exclude: [],
-            cacheDir: './cache',
-            workerCount: 6,
-            sourceMap: false
-        })
     ],
     //开启tree-shaking
     optimization: {
@@ -153,9 +105,38 @@ const config = {
         concatenateModules: true, // 尽可能将所有模块合并输出到一个函数中
         //压缩css
         minimizer: [
-            [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
-        ]
+            // [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
+        ],
+        // 分割代码块
+        splitChunks: {
+            chunks: 'all',
+            /**
+             * initial 入口chunk，对于异步导入的文件不处理
+             async 异步chunk，只对异步导入的文件处理
+             all 全部chunk
+             */
+
+            // 缓存分组
+            cacheGroups: {
+                // 第三方模块
+                vendor: {
+                    name: 'vendor', // chunk 名称
+                    priority: 1, // 权限更高，优先抽离，重要！！！
+                    test: /node_modules/,
+                    minSize: 1000,  // 大小限制
+                    minChunks: 1  // 最少复用过几次
+                },
+
+                // 公共的模块
+                common: {
+                    name: 'common', // chunk 名称
+                    priority: 0, // 优先级
+                    minSize: 10,  // 公共模块的大小限制
+                    minChunks: 2  // 公共模块最少复用过几次
+                }
+            }
+        }
     },
 }
 
-export default config
+
