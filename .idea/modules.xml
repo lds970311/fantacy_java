@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Frontend/Frontend.iml" filepath="$PROJECT_DIR$/Frontend/Frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fantacy_java.iml" filepath="$PROJECT_DIR$/fantacy_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_se/java_se.iml" filepath="$PROJECT_DIR$/java_se/java_se.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my_algorithm/my_algorithm.iml" filepath="$PROJECT_DIR$/my_algorithm/my_algorithm.iml" />
+    </modules>
+  </component>
+</project>
