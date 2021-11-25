@@ -37,9 +37,9 @@ public class MyArrayUtils {
     //可以在任意类型的对象数组中，查找最大值，要求元素必须实现Comparable接口
     public static <T extends Comparable<? super T>> T getMax(T[] arr) {
         T max = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (max.compareTo(arr[i]) < 0) {
-                max = arr[i];
+        for (T t : arr) {
+            if (max.compareTo(t) < 0) {
+                max = t;
             }
         }
         return max;
