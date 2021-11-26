@@ -6,6 +6,7 @@
     <p :id="dynamicId">动态属性 id</p>
 
     <hr/>
+    <p :class="list.length === 7 ?'red':'' ">{{ getLength }}</p>
     <!--    <p v-html="rawHtml">
           <span>有 xss 风险</span>
           <span>【注意】使用 v-html 之后，将会覆盖子元素</span>
@@ -14,7 +15,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import {msgTest} from "../test/msgTest";
 
 export default {
@@ -24,15 +25,32 @@ export default {
       message: 'hello vue',
       flag: true,
       rawHtml: '指令 - 原始 html <b>加粗</b> <i>斜体</i>',
-      dynamicId: `id-${Date.now()}`
+      dynamicId: `id-${Date.now()}`,
+      list: [1, 2, 3, 4, 5, 6, 7, 8]
     }
   },
   mounted() {
     console.log(msgTest());
+  },
+  computed: {
+    getLength() {
+      return this.list.length
+    }
+  },
+  watch: {
+    list: {
+      deep: true,
+      immediate: true,
+      get() {
+        console.log("123")
+      }
+    }
   }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+.red {
+  color: red;
+}
 </style>
