@@ -5,6 +5,7 @@ import VuexTest from "../components/VuexTest.vue";
 import VModel from "../pages/VModel.vue"
 import ToRefs from "../pages/ToRefs.vue";
 import {defineAsyncComponent} from "vue";
+import Parent from "../pages/Parent.vue"
 
 
 const router = createRouter({
@@ -31,6 +32,13 @@ const router = createRouter({
             component: ToRefs,
             meta: {
                 title: "toRefs"
+            }
+        },
+        {
+            path: '/parent',
+            component: Parent,
+            meta: {
+                title: "parent"
             }
         },
         {
