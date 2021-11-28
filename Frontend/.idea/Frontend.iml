@@ -9,7 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="three" level="application" />
-    <orderEntry type="library" name="runtime" level="application" />
     <orderEntry type="library" name="sea" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="vue.common.dev" level="application" />
@@ -22,5 +21,6 @@
     <orderEntry type="library" name="snabbdom-style" level="application" />
     <orderEntry type="library" name="snabbdom-eventlisteners" level="application" />
     <orderEntry type="library" name="h" level="application" />
+    <orderEntry type="library" name="uni-app" level="application" />
   </component>
 </module>
