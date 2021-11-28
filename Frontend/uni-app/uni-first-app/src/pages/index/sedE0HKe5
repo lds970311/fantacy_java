@@ -1,0 +1,59 @@
+<template>
+  <view class="content">
+    <view v-for="item in list" :key="item.id">
+      <text>{{ item.address }}</text>
+      <text @click="handleClick">{{ item.name }}</text>
+    </view>
+    <Card></Card>
+    <view class="item" v-for="(value, index) in iconType" :key="index">
+      <icon :type="value" size="13"/>
+      <text>{{ value }}</text>
+    </view>
+    <editor></editor>
+  </view>
+</template>
+
+<script lang="js">
+import Vue from 'vue';
+
+export default Vue.extend({
+  data() {
+    return {
+      title: 'Hello',
+      iconType: ['success', 'success_no_circle', 'info', 'warn', 'waiting', 'cancel', 'download', 'search', 'clear'],
+      list: [
+        {
+          id: 1,
+          address: 'beijing',
+          name: 'a'
+        },
+        {
+          id: 2,
+          address: 'shanghai',
+          name: 'b'
+        },
+        {
+          id: 3,
+          address: 'shenzhen',
+          name: 'c'
+        }
+      ]
+    };
+  },
+  onLoad() {
+    uni.showToast({
+      title: "loading...",
+      icon: "loading",
+      duration: 1000
+    })
+    setTimeout(() => {
+      uni.navigateTo({
+        url: "/pages/Home/Home"
+      })
+    }, 1500)
+  },
+  methods: {}
+});
+</script>
+
+<style lang="scss"></style>

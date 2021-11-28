@@ -8,13 +8,14 @@
 
 <script lang="ts">
 import {mapGetters, useStore} from "vuex";
-
+import {useRoute} from "vue-router"
 
 export default {
   name: "VuexTest",
   props: [],
   setup() {
     const store = useStore()
+    const route = useRoute()
     console.log(store)
     const add = () => {
       store.commit("mainOptions/increment")
