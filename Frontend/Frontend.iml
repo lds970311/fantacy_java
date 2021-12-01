@@ -10,8 +10,16 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/Algorithms/dist" />
       <excludeFolder url="file://$MODULE_DIR$/Algorithms/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/build" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/first-flutter-app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/first-flutter-app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/NativeApps/first-flutter-app/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
