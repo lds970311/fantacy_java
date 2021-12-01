@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:convert';
 
+import 'dart:math';
+
 void main() async {
   var result = await getDataFromZhihuAPI();
   print(result);
@@ -18,4 +20,9 @@ getDataFromZhihuAPI() async {
   var response = await request.close();
   //5、解码响应的内容
   return await response.transform(utf8.decoder).join();
+}
+
+int getRandom() {
+  Random random = new Random(4);
+  return random.nextInt(10);
 }
