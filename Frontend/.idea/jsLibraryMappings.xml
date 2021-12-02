@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{h, jquery, lodash.core, sea, snabbdom, snabbdom-class, snabbdom-eventlisteners, snabbdom-props, snabbdom-style, three, uni-app, vue.common.dev}" />
+    <file url="PROJECT" libraries="{h, jquery, lodash.core, sea, snabbdom, snabbdom-class, snabbdom-eventlisteners, snabbdom-props, snabbdom-style, three, vue.common.dev}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
