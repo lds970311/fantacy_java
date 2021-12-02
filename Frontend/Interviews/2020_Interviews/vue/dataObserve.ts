@@ -1,6 +1,3 @@
-//VUE ?????????
-
-
 // @ts-ignore
 function observe(obj: any) {
     if (!obj || typeof obj !== 'object') {
@@ -28,16 +25,13 @@ function defineReactive(obj: any, key: any, val: any) {
 
         set(v: any): void {
             //console.log("change value")
-            //???wather??update
             dep.notify()
             val = v;
         }
     })
 }
-
-//???dep????
 class Dep {
-    static target: Wather | null;
+    static target: Watcher | null;
     private subs: any[];
 
     constructor() {
@@ -57,10 +51,10 @@ class Dep {
     }
 }
 
-class Wather {
-    private callback: Function;
-    private obj: any
-    private key: any
+class Watcher {
+    private readonly callback: Function;
+    private readonly obj: any
+    private readonly key: any
     private val: any
 
 
@@ -91,7 +85,7 @@ let data = {
 }
 
 observe(data)
-new Wather(data, 'name', () => {
+new Watcher(data, 'name', () => {
     console.log("haha")
 })
 // @ts-ignore

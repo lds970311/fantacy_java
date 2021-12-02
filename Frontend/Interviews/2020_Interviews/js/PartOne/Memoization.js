@@ -10,4 +10,4 @@ let fibonacci = (function () {
     }
 })()
 
-console.log(fibonacci(5));
+console.log(fibonacci(6));

@@ -16,6 +16,6 @@
     border-radius: 50%;
 }
 
-.circle:nth-of-type(2) {
+.circle:last-of-type {
     align-self: flex-end;
 }

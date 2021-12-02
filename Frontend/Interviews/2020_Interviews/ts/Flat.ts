@@ -27,7 +27,7 @@ console.log(newList) //[ 1, 2, 3, 4, 5 ]
 
 
 // 3, reduce实现
-const flatten = (arr: any) => {
+const flatten: (arr: Array<any>) => any = (arr: Array<any>) => {
     return arr.reduce((a: any, item: any) => {
         return a.concat(Array.isArray(item) ? flatten(item) : item)
     }, [])
