@@ -1,5 +1,5 @@
 //map
-function map(arr: Array<unknown>, callBack: Function): Array<unknown> {
+function map<T>(arr: T[], callBack: (item: T, index?: number, array?: Array<T>) => any): T[] {
     const result = []
     for (let i = 0; i < arr.length; i++) {
         result.push(callBack(arr[i], i, arr))
@@ -7,7 +7,7 @@ function map(arr: Array<unknown>, callBack: Function): Array<unknown> {
     return result
 }
 
-function filter(arr: Array<unknown>, callBack: Function): Array<unknown> {
+function filter<T>(arr: T[], callBack: (item: T, index?: number, array?: Array<T>) => boolean): T[] {
     const result = []
     for (let i = 0; i < arr.length; i++) {
         if (callBack(arr[i], i, arr)) {
@@ -17,7 +17,7 @@ function filter(arr: Array<unknown>, callBack: Function): Array<unknown> {
     return result;
 }
 
-function reduce(callBack: Function, arr: Array<unknown>, initialValue?: number): unknown {
+function reduce<T>(callBack: (pre: T, curr: T, currIndex: number, initialValue: any) => any, arr: T[], initialValue?: any): any {
     let result
     if (initialValue) {
         result = initialValue
@@ -30,14 +30,14 @@ function reduce(callBack: Function, arr: Array<unknown>, initialValue?: number):
     return result;
 }
 
-// @ts-ignore
-const arr = [1, 2, 3, 4]
-map(arr, (item: number) => {
+
+const arr1 = [1, 2, 3, 4]
+map<number>(arr1, item => {
     console.log(item)
 })
 
 
-console.log(filter(arr, (item: number) => {
+console.log(filter(arr1, (item: number) => {
     return item % 2 === 0
 }));
 
@@ -45,9 +45,9 @@ console.log(filter(arr, (item: number) => {
 console.log(reduce((a: number, c: number) => {
     // console.log(a, c)
     return a + c
-}, arr), 1);
+}, arr1), 1);
 
-arr.reduce((a, c) => {
+arr1.reduce((a, c) => {
     console.log(a, c)
     return a + c
 })

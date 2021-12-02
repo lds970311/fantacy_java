@@ -3,14 +3,13 @@
  */
 
 // @ts-ignore
-Function.prototype.myCall = function (ctx) {
+Function.prototype.myCall = function (ctx, ...args) {
     if (typeof this !== 'function') {
         throw new Error("Error")
     }
     ctx = ctx || window
     ctx.fn = this;
     // @ts-ignore
-    const args = [...arguments].slice(1);
     const result = ctx.fn(...args)
     delete ctx.fn
     return result;
@@ -35,13 +34,11 @@ Function.prototype.myApply = function (ctx) {
 }
 
 // @ts-ignore
-Function.prototype.myBind = function (ctx) {
+Function.prototype.myBind = function (ctx, ...args) {
     if (typeof this !== 'function') {
         throw new Error("Error")
     }
     const that = this
-    // @ts-ignore
-    const args = [...arguments].slice(1)
     return function F(this: any) {
         if (this instanceof F) {
             // @ts-ignore
