@@ -23,10 +23,11 @@ const InputItem: React.FunctionComponent<State> = (props: State) => {
     return (
         <div className="input-item">
             <input type="text" value={val} onChange={handleInputChange}
-                   style={{
-                       width: "200px",
-                       marginRight: "15px"
-                   }}
+                   style={
+                       {
+                           width: "200px",
+                           marginRight: "15px"
+                       }}
             />
             <button onClick={clickHandler}>新增</button>
         </div>

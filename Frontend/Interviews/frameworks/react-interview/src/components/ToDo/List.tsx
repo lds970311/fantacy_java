@@ -17,7 +17,13 @@ interface State {
 
 const List: React.FunctionComponent<State> = ({listData, onDelete, CompleteChange}) => {
     return (
-        <ul style={{listStyle: "none", padding: '30px', textAlign: "left"}}>
+        <ul style={
+            {
+                listStyle: "none",
+                padding: '30px',
+                textAlign: "left"
+            }
+        }>
             {listData.map(data => {
                 return (
                     <ListItem id={data.id} title={data.title} completed={data.completed} key={data.id}

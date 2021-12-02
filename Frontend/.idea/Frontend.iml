@@ -21,6 +21,5 @@
     <orderEntry type="library" name="snabbdom-style" level="application" />
     <orderEntry type="library" name="snabbdom-eventlisteners" level="application" />
     <orderEntry type="library" name="h" level="application" />
-    <orderEntry type="library" name="uni-app" level="application" />
   </component>
 </module>

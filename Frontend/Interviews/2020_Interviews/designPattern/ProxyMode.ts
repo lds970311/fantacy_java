@@ -35,6 +35,7 @@ class CarProxy {
 
 const driver = new Driver(19);
 
+
 // @ts-ignore
 const result = new CarProxy(driver).drive();
 

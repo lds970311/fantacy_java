@@ -18,7 +18,10 @@ const Navigator: React.FunctionComponent<INavigationOptions> = (props: INavigati
     const {options} = props;
     return (
         <div className={Style.navigator}>
-            <img src={img1} alt="avatar" style={{width: "30px", height: "30px"}}/>
+            <img src={img1} alt="avatar" style={{
+                width: "30px",
+                height: "20px",
+            }}/>
             <ul>
                 {
                     options.map(item => {
