@@ -24,34 +24,35 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="867d17b7-2bee-449c-b120-3d26bce7a2db">
+        <schema name="girls" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="d89e6c91-1a64-4461-a5f7-dcf97c72127b">
-      <console name="144" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="867d17b7-2bee-449c-b120-3d26bce7a2db">
+      <console name="145" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" />
+    <connection id="867d17b7-2bee-449c-b120-3d26bce7a2db" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" dataset="nodejs.usr" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" dataset="php.userinfo" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" dataset="hkzf.admins" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" dataset="nodejs.moment" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="867d17b7-2bee-449c-b120-3d26bce7a2db" dataset="girls.admin" active-filter-id="6e2bb6ae-74a4-4c0f-b35b-cc5555a47f8e">
+      <filter id="6e2bb6ae-74a4-4c0f-b35b-cc5555a47f8e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
-  </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/Node/MySQL/first.sql" connection-id="c3e4e9b2-1676-412c-9875-d5ebf4eee1a8" session-id="MAIN" current-schema="newshop" />
-    <mapping file-url="file://$PROJECT_DIR$/Node/MySQL/DML/student.sql" connection-id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" session-id="MAIN" current-schema="nodejs" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -76,9 +77,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="d89e6c91-1a64-4461-a5f7-dcf97c72127b" active="true">
+      <connection id="867d17b7-2bee-449c-b120-3d26bce7a2db" active="true">
         <database>
-          <name value="144" />
+          <name value="145" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -87,7 +88,7 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="192.168.208.144" />
+          <host value="192.168.208.145" />
           <port value="3306" />
           <database value="mysql" />
           <type value="USER_PASSWORD" />
@@ -487,7 +488,7 @@
       <transactions>
         <uncommitted-changes>
           <on-project-close value="ASK" />
-          <on-disconnect value="COMMIT" />
+          <on-disconnect value="ASK" />
           <on-autocommit-toggle value="ASK" />
         </uncommitted-changes>
         <multiple-uncommitted-changes>
