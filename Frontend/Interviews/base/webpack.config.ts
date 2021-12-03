@@ -3,11 +3,13 @@ import * as path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import generateHTMLConfig from "./src/utils/gererateHTMLConfig";
+import {Configuration} from "webpack";
 
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
-const config = {
+// @ts-ignore
+const config: Configuration = {
     mode: "development",
     entry: {
         index: "./src/main.ts",
@@ -27,6 +29,7 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    // @ts-ignore
     devServer: {
         compress: true,
         allowedHosts: 'all',

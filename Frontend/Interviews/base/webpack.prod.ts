@@ -9,7 +9,7 @@ import HappyPack from "happypack";
 
 const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin")
 
-export default {
+const config: webpack.Configuration = {
     mode: "production",
     entry: {
         index: "./src/main.ts",
@@ -153,5 +153,7 @@ export default {
         }
     },
 }
+
+export default config
 
 

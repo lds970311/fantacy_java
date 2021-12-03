@@ -1,0 +1,16 @@
+<template>
+  <button @click="handleClick">emits</button>
+</template>
+
+<script setup lang="ts">
+import {defineEmits, useCont} from "vue"
+
+const handleClick = () => {
+  emits
+}
+defineEmits(["emitClick"])
+</script>
+
+<style scoped lang="less">
+
+</style>
