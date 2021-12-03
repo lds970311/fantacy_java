@@ -15,6 +15,7 @@ function getDataType(data: any): any {
     return typeof data;
 }
 
+// @ts-ignore
 let a2: symbol = Symbol(1)
 console.log(getDataType(123))
 console.log(getDataType("hehe"))
