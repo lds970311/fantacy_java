@@ -13,16 +13,11 @@ function cssStyle2DomStyle(sName) {
     }
     let strArray = sName.split("-");
     let newStr = "";
-    for (let i = 0; i < strArray.length; i++) {
-        if (i === 0) {
-            newStr += strArray[i];
-        } else {
-            let substr = strArray[i]
-            let finalStr = substr[0].toUpperCase() + substr.slice(1)
-            newStr += finalStr
-        }
+    for (let i = 1; i < strArray.length; i++) {
+        const word = strArray[i].charAt(0).toUpperCase() + strArray[i].substr(1);
+        newStr += word;
     }
-    return newStr;
+    return strArray[0] + newStr;
 }
 
 

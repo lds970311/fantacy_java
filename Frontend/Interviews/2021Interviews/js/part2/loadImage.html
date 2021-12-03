@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>使用Promise异步加载图片</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" user-scalable="no">
+</head>
+<body>
+<script type="module">
+    function asyncLoadImage(url) {
+        return new Promise((resolve, reject) => {
+            const image = new Image()
+            image.src = url;
+            image.width = 400
+            image.height = 300
+            image.onload = () => {
+                console.log("load image success!")
+                resolve(image)
+            }
+            image.onerror = () => {
+                const msg = "image load error!"
+                reject(msg)
+            }
+        })
+    }
+
+    window.onload = () => {
+        asyncLoadImage("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F16%2F08%2F19%2F1457b6a76c7756c.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1635866903&t=66aa2cbb62e1c06536b67796337c72b1").then(res => {
+            document.body.appendChild(res)
+        }).catch(err => {
+            alert(err)
+        })
+    }
+</script>
+</body>
+</html>
